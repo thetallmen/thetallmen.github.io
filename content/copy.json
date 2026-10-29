@@ -2,60 +2,60 @@
   "hero": {
     "lines": ["The", "Tall", "Men"],
     "lede": "Creative marketing for brands that want to be *seen.*",
-    "keywords": ["Ideas", "Strategy", "Content", "Media", "Production"],
-    "scrollLabel": "Scroll",
-    "figure": {
-      "src": "assets/figures/camera.jpg",
-      "alt": "The Tall Man, seen from below, holding a camera toward the viewer",
-      "trace": {
-        "loop": { "cx": 79, "cy": 82, "rx": 25, "ry": 15, "rot": -14 },
-        "slash": { "x1": 44, "y1": 18, "x2": 80, "y2": 15 }
-      }
-    }
+    "keywords": ["Ideas", "Strategy", "Content", "Media", "Production", "AI"],
+    "scrollLabel": "Scroll to start the film",
+    "pose": "camera"
   },
   "intro": {
-    "label": "About",
+    "label": "Scene 01 — The view",
     "title": ["A higher", "perspective", "on *brands.*"],
-    "text": "Stand a head taller and the room looks different. You see over the noise. You notice the gap before anyone else does, and you get there first. That is how we work: a clearer view, a sharper read, a faster move.",
+    "text": "Stand a head taller and the room looks different. You see over the noise, you notice the gap first, and you move before anyone else. That is how we work: a clearer view, a sharper read, a faster move.",
     "keywords": ["People", "Ideas", "Culture", "Brands"],
-    "figure": {
-      "src": "assets/figures/laptop.jpg",
-      "alt": "The Tall Man holding a laptop under his arm, seen from a low angle",
-      "trace": {
-        "loop": { "cx": 72, "cy": 64, "rx": 27, "ry": 23, "rot": 18 },
-        "slash": { "x1": 28, "y1": 15, "x2": 54, "y2": 13 }
-      }
-    }
+    "pose": "laptop"
+  },
+  "capabilitiesIntro": {
+    "label": "Scene 02 — The crew",
+    "title": ["Six crafts.", "One *studio.*"]
+  },
+  "sectors": {
+    "label": "Scene 03 — On set",
+    "title": ["We shoot where", "brands *live.*"],
+    "items": ["Events", "Advertising", "Gyms & Fitness", "Food & Beverage", "Automotive", "Real Estate", "Beauty", "AI Films"]
+  },
+  "reel": {
+    "label": "Scene 04 — The reel",
+    "title": ["Moving", "*pictures.*"],
+    "text": "Event films, commercials, gym campaigns, launches and AI films. Tap any frame to watch it with sound."
+  },
+  "designs": {
+    "label": "Scene 05 — The prints",
+    "title": ["Frames that", "*stop the scroll.*"],
+    "text": "Campaign key visuals and social design for restaurants, car brands, retail and occasions."
+  },
+  "markets": {
+    "label": "Scene 06 — On air",
+    "title": ["Media that", "*travels.*"],
+    "text": "We plan and run paid campaigns and media buying for brands across five markets.",
+    "items": [
+      { "name": "Egypt", "code": "EG" },
+      { "name": "Saudi Arabia", "code": "SA" },
+      { "name": "Iraq", "code": "IQ" },
+      { "name": "Algeria", "code": "DZ" },
+      { "name": "United States", "code": "US" }
+    ],
+    "pose": "mouse"
   },
   "marquee": ["See further", "See sooner", "Stand out", "Make people look"],
-  "work": {
-    "title": "Selected *work*"
-  },
+  "work": { "title": "Selected *work*" },
   "film": {
     "label": "Featured film",
     "title": ["The tall", "*man.*"],
-    "text": "The face of the agency, and the idea behind its name. Presence you notice before he says a word. Watch with sound.",
-    "playLabel": "Play film"
+    "text": "The face of the agency, and the idea behind its name.",
+    "playLabel": "Play"
   },
-  "capabilitiesIntro": {
-    "label": "Our capabilities",
-    "title": ["Ideas", "that go", "*further.*"],
-    "figure": {
-      "src": "assets/figures/screens.jpg",
-      "alt": "The Tall Man surrounded by floating campaign layouts",
-      "trace": {
-        "loop": { "cx": 71, "cy": 52, "rx": 27, "ry": 36, "rot": -22 },
-        "slash": { "x1": 44, "y1": 12, "x2": 72, "y2": 10 }
-      }
-    }
-  },
-  "clients": {
-    "title": ["Brands", "we grow", "*with.*"],
-    "note": "Different industries. Real results.",
-    "items": []
-  },
+  "clients": { "title": ["Brands", "we grow", "*with.*"], "note": "", "items": [] },
   "philosophy": {
-    "label": "Philosophy",
+    "label": "Scene 07 — The idea",
     "statement": ["Tall is not a size.", "It is a *point of view.*"],
     "points": [
       { "term": "Presence", "text": "A tall man walks into a room and the room adjusts. A brand can do the same." },
@@ -67,42 +67,22 @@
     "title": "About",
     "statement": ["Based in Cairo.", "Built to be *seen.*"],
     "story": [
-      "The Tall Men is a creative marketing agency based in Cairo, Egypt. We work with brands that want to be seen clearly and remembered for it.",
-      "Our name is our method. We step back, look from above, and bring that wider, sharper view to every brief."
+      "The Tall Men is a creative marketing agency based in Cairo, Egypt, working with brands in Egypt, the Gulf, North Africa and the United States."
     ],
-    "team": [],
-    "culture": [],
-    "locations": []
+    "team": [], "culture": [], "locations": []
   },
-  "location": {
-    "label": "Location",
-    "mapsLabel": "Open in Google Maps"
-  },
+  "location": { "label": "Studio", "mapsLabel": "Open in Google Maps" },
   "cta": {
-    "label": "Contact",
+    "label": "Final scene — Your move",
     "lines": ["Let's", "make it", "*bigger.*"],
     "text": "Have a project in mind? Let's build something that gets seen.",
     "buttonLabel": "Get in touch",
     "visitLabel": "Visit the studio",
-    "figure": {
-      "src": "assets/figures/mouse.jpg",
-      "alt": "The Tall Man holding a computer mouse out toward the viewer",
-      "trace": {
-        "loop": { "cx": 50, "cy": 64, "rx": 27, "ry": 18, "rot": -12 },
-        "slash": { "x1": 22, "y1": 22, "x2": 44, "y2": 21 }
-      }
-    }
+    "pose": "mouse"
   },
   "footer": {
-    "backToTop": "Back to top",
+    "backToTop": "Back to the opening",
     "rights": "All rights reserved.",
-    "keywords": ["Ideas", "People", "Brands", "Impact"],
-    "figure": {
-      "src": "assets/figures/walk.jpg",
-      "alt": "",
-      "trace": {
-        "sweep": { "x1": 30, "y1": 92, "x2": 110, "y2": 40 }
-      }
-    }
+    "keywords": ["Ideas", "People", "Brands", "Impact"]
   }
 }

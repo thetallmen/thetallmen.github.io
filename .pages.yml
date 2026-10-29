@@ -119,7 +119,7 @@ content:
             label: Goes to
             type: select
             options:
-              values: ["#work", "#film", "#capabilities", "#philosophy", "#process", "#about", "#location", "#contact"]
+              values: ["#top", "#intro", "#capabilities", "#sectors", "#work", "#designs", "#markets", "#philosophy", "#process", "#contact"]
       - name: locale
         label: Language (advanced)
         type: object

@@ -25,7 +25,7 @@ const n = (v) => Number(v) || 0;
 const f = (v) => v.toFixed(2);
 
 // A loop that overshoots its start, wobbles in radius and drifts slightly, like a marker circle.
-function loopPath({ cx, cy, rx, ry, rot = 0 }, seed = 7) {
+export function loopPath({ cx, cy, rx, ry, rot = 0 }, seed = 7) {
   const r = rand(seed);
   const a = (n(rot) * Math.PI) / 180;
   const start = -2.3 + r() * 0.6;
@@ -44,7 +44,7 @@ function loopPath({ cx, cy, rx, ry, rot = 0 }, seed = 7) {
 }
 
 // A single loose stroke with a slight bow and an overshooting tail.
-function strokePath({ x1, y1, x2, y2 }, bow = 3) {
+export function strokePath({ x1, y1, x2, y2 }, bow = 3) {
   const mx = (n(x1) + n(x2)) / 2;
   const my = (n(y1) + n(y2)) / 2 - bow;
   return `M${f(n(x1))} ${f(n(y1))} Q${f(mx)} ${f(my)} ${f(n(x2))} ${f(n(y2))}`;

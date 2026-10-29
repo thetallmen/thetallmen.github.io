@@ -102,7 +102,7 @@ export function Lightbox() {
   <div class="lbox" role="dialog" aria-modal="true" aria-labelledby="lbox-title" data-lbox hidden>
     <div class="lbox__backdrop" data-lclose></div>
     <div class="lbox__head wrap">
-      <h2 class="lbox__title" id="lbox-title" data-ltitle></h2>
+      <h2 class="visually-hidden" id="lbox-title" data-ltitle></h2>
       <span class="meta lbox__count" data-lcount></span>
       <button class="vbtn lbox__close" type="button" data-lclose>Close</button>
     </div>

@@ -69,6 +69,7 @@ export async function loadContent() {
   copy.capabilities = services.capabilities || { title: 'Capabilities', items: [] };
   copy.capabilities.items = arr(copy.capabilities.items).map((item) => ({
     name: str(item.name),
+    pose: str(item.pose),
     tagline: str(item.tagline),
     text: str(item.text),
     bullets: arr(item.bullets),
@@ -86,6 +87,12 @@ export async function loadContent() {
   copy.cta.figure = normalizeFigure(copy.cta.figure);
   copy.footer.keywords = arr(copy.footer.keywords);
   copy.footer.figure = normalizeFigure(copy.footer.figure);
+  // Scenes added for the one-page film. Missing blocks render as empty, never break.
+  const block = (b, extra = {}) => ({ label: '', text: '', ...extra, ...(b || {}), title: arr(b && b.title) });
+  copy.sectors = block(copy.sectors); copy.sectors.items = arr(copy.sectors.items);
+  copy.reel = block(copy.reel);
+  copy.designs = block(copy.designs);
+  copy.markets = block(copy.markets); copy.markets.items = arr(copy.markets.items).filter((m) => m && m.name);
   copy.clients = copy.clients || { title: [], items: [] };
   copy.clients.title = arr(copy.clients.title);
   copy.clients.items = arr(copy.clients.items)

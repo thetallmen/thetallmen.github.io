@@ -7,7 +7,8 @@ export function Wordmark(agency, { size = '' } = {}) {
     return `<img class="wordmark wordmark--image ${size}" src="${esc(agency.logo.src)}" alt="${esc(agency.logo.alt || agency.name)}">`;
   }
   const words = agency.name.split(' ');
+  // "agency" signed underneath in a handwritten script, quiet on purpose.
   return `<span class="wordmark ${size}" aria-hidden="true">${words
     .map((w) => `<span class="wordmark__word${w.toUpperCase() === 'TALL' ? ' wordmark__word--tall' : ''}">${esc(w)}</span>`)
-    .join('')}</span>`;
+    .join('')}<span class="signature wordmark__sig">agency</span></span>`;
 }

@@ -1,65 +1,53 @@
-// Entry point: loads content/*.json, renders every section, then wires up behaviour.
+// Entry point: loads content/*.json, renders the film scene by scene, then wires up behaviour.
 
 import { loadContent } from './config.js';
 import { $ } from './lib/dom.js';
 import { Header, MobileMenu, initHeader } from './components/Header.js';
-import { Hero } from './components/Hero.js';
-import { Intro, Marquee } from './components/Intro.js';
-import { Work } from './components/ProjectItem.js';
-import { FeaturedFilm, VideoModal, initVideoModal, initLazyVideos } from './components/VideoPlayer.js';
-import { Capabilities, Clients, Philosophy, Process } from './components/Capabilities.js';
-import { About, Location } from './components/About.js';
-import { CTA } from './components/CTA.js';
-import { Archive, initArchive, Lightbox, initLightbox } from './components/Archive.js';
+import { Opening, Perspective, Crafts, Sectors, Markets, Idea, Finale } from './components/Scenes.js';
+import { Reel, Prints, initCarousels } from './components/Showcase.js';
+import { VideoModal, initVideoModal } from './components/VideoPlayer.js';
+import { Lightbox, initLightbox } from './components/Archive.js';
 import { Footer } from './components/Footer.js';
 import { initCustomCursor } from './components/CustomCursor.js';
 import { runLoader } from './components/Loader.js';
-import { initReveals, playHeroEntrance, initScrollEffects, initMagnetic, initAnchors } from './motion.js';
+import { initFilm, playOpening, initMagnetic, initAnchors } from './motion.js';
 
 async function start() {
-  const { agency, nav, copy, contact, location, projects, featured, featuredFilm, locale } = await loadContent();
+  const { agency, nav, copy, contact, location, projects, locale } = await loadContent();
 
   document.documentElement.lang = locale.lang;
   document.documentElement.dir = locale.dir;
 
   $('[data-slot="header"]').innerHTML = Header({ agency, nav }) + MobileMenu({ nav, location, contact });
 
+  // The running order of the film.
   $('[data-slot="main"]').innerHTML = [
-    Hero({ agency, copy }),
-    Intro({ copy }),
-    copy.marquee.length ? Marquee({ copy }) : '',
-    featured.length ? Work({ copy, projects: featured, total: projects.length }) : '',
-    projects.length > featured.length ? Archive({ projects }) : '',
-    featuredFilm ? FeaturedFilm({ copy, film: featuredFilm }) : '',
-    copy.capabilities.items.length ? Capabilities({ copy }) : '',
-    copy.clients.items.length ? Clients({ copy }) : '',
-    Philosophy({ copy }),
-    copy.process.steps.length ? Process({ copy }) : '',
-    About({ copy }),
-    location.addressLines.length ? Location({ copy, location }) : '',
-    CTA({ copy, contact, location }),
+    Opening({ agency, copy }),
+    Perspective({ copy }),
+    copy.capabilities.items.length ? Crafts({ copy }) : '',
+    Sectors({ copy }),
+    Reel({ copy, projects }),
+    Prints({ copy, projects }),
+    Markets({ copy }),
+    Idea({ copy }),
+    Finale({ copy, contact, location }),
   ].join('');
 
   $('[data-slot="footer"]').innerHTML = Footer({ agency, nav, contact, copy });
   $('[data-slot="modal"]').innerHTML = VideoModal() + Lightbox();
 
   initHeader();
-  initReveals();
-  initScrollEffects();
+  initCarousels();
+  initVideoModal();
+  initLightbox(projects);
   initMagnetic();
   initAnchors();
-  initVideoModal();
-  initLazyVideos();
-  initArchive();
-  initLightbox(projects);
   initCustomCursor();
+  initFilm();
 
   document.documentElement.classList.add('is-ready');
-  // Content arrives after first paint, so honour a #section link once it exists.
-  if (window.location.hash) {
-    document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
-  }
-  return runLoader(agency).then(playHeroEntrance);
+  if (window.location.hash) document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
+  return runLoader(agency).then(playOpening);
 }
 
 start().catch((err) => {
