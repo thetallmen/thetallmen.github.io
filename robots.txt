@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 
 # EDIT DOMAIN HERE
-Sitemap: https://www.example.com/sitemap.xml
+Sitemap: https://thetallmen.github.io/sitemap.xml

@@ -1,15 +1,15 @@
 # دليل لوحة التحكم — The Tall Men
 
 ## الروابط
-- **الموقع:** https://thetallmen.netlify.app
-- **لوحة التحكم:** https://thetallmen.netlify.app/admin
+- **الموقع:** https://thetallmen.github.io
+- **لوحة التحكم:** https://thetallmen.github.io/admin
   (بتحوّلك على Pages CMS: https://app.pagescms.org)
 
 ## الدخول
 1. افتح لينك لوحة التحكم.
 2. دوس **Sign in with GitHub**.
 3. ادخل بيوزر وباسورد حساب GitHub بتاعك (حساب **thetallmen** أو حساب أي عضو في الفريق).
-4. أول مرة بس: هيطلب منك تسطّب **Pages CMS** على حساب GitHub. اختار ريبو **thetallmen-website** ودوس **Install**.
+4. أول مرة بس: هيطلب منك تسطّب **Pages CMS** على حساب GitHub. اختار ريبو **thetallmen.github.io** ودوس **Install**.
 
 ## التعديل
 في القائمة اللي على الشمال:
@@ -22,7 +22,7 @@
 
 ## إضافة حد من الفريق
 1. الشخص يعمل حساب GitHub خاص بيه.
-2. من GitHub افتح ريبو **thetallmen-website**، وبعدين **Settings → Collaborators → Add people**، واكتب اليوزر بتاعه.
+2. من GitHub افتح ريبو **thetallmen.github.io**، وبعدين **Settings → Collaborators → Add people**، واكتب اليوزر بتاعه.
 3. بعد ما يقبل الدعوة يقدر يدخل لوحة التحكم بحسابه هو.
 
 ## حدود مهمة
