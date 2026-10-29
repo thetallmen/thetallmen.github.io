@@ -68,3 +68,5 @@ assets/js/components/      Header, Hero, SectionTitle, ProjectItem, VideoPlayer,
 ## Arabic / RTL later
 
 Set `locale.lang = 'ar'` and `locale.dir = 'rtl'` in a translated config. Layout uses logical CSS properties, so it mirrors. Add an Arabic display face to `--font-display`.
+
+Live site: https://thetallmen.netlify.app — Admin: https://thetallmen.netlify.app/admin
