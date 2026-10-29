@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "lines": ["A head", "above the", "market."],
+    "lede": "The Tall Men is a creative marketing agency in Cairo. Height gives us the better view: we see where the market is moving, clearly and early, and we make brands nobody can overlook.",
+    "scrollLabel": "Scroll"
+  },
+  "intro": {
+    "label": "The view from up here",
+    "text": "Stand a head taller and the room looks different. You see over the noise. You notice the gap before anyone else does, and you get there first. That is how we work: a clearer view, a sharper read, a faster move."
+  },
+  "marquee": ["See further", "See sooner", "Stand out", "Make people look"],
+  "work": {
+    "title": "Selected work"
+  },
+  "film": {
+    "label": "Featured film",
+    "title": ["The tall", "man."],
+    "text": "The face of the agency, and the idea behind its name. Presence you notice before he says a word. Watch with sound.",
+    "playLabel": "Play film"
+  },
+  "philosophy": {
+    "label": "Philosophy",
+    "statement": ["Tall is not a size.", "It is a point of view."],
+    "points": [
+      { "term": "Presence", "text": "A tall man walks into a room and the room adjusts. A brand can do the same." },
+      { "term": "Perspective", "text": "From higher up, patterns show sooner. We read the market from there." },
+      { "term": "Precision", "text": "A clear view means fewer guesses. We find the right move, then make it fast." }
+    ]
+  },
+  "about": {
+    "title": "About",
+    "statement": ["Based in Cairo.", "Built to be seen."],
+    "story": [
+      "The Tall Men is a creative marketing agency based in Cairo, Egypt. We work with brands that want to be seen clearly and remembered for it.",
+      "Our name is our method. We step back, look from above, and bring that wider, sharper view to every brief."
+    ],
+    "team": [],
+    "culture": [],
+    "locations": []
+  },
+  "location": {
+    "label": "Location",
+    "mapsLabel": "Open in Google Maps"
+  },
+  "cta": {
+    "label": "Contact",
+    "lines": ["Have a project?", "Let's make", "people look."],
+    "buttonLabel": "Start a project",
+    "visitLabel": "Visit the studio"
+  },
+  "footer": {
+    "backToTop": "Back to top",
+    "rights": "All rights reserved."
+  }
+}

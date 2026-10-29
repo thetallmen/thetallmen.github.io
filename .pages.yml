@@ -1,0 +1,248 @@
+# THE TALL MEN — admin panel (Pages CMS: https://app.pagescms.org, free)
+# Log in with your GitHub account. Every save is a commit on GitHub;
+# Netlify then redeploys the site automatically (about 1 minute).
+
+media:
+  input: assets/uploads
+  output: assets/uploads
+
+content:
+  # ---------------------------------------------------------------- Portfolio
+  - name: work
+    label: Portfolio
+    type: file
+    path: content/work.json
+    format: json
+    fields:
+      - name: projects
+        label: Projects (Selected Work)
+        type: object
+        list: true
+        fields: &project_fields
+          - { name: id, label: "Short ID (lowercase-with-dashes, e.g. pure-scent-launch)", type: string, required: true }
+          - { name: name, label: "Project name (empty shows “Project 01”)", type: string }
+          - { name: client, label: Client, type: string }
+          - { name: industry, label: Industry, type: string }
+          - { name: services, label: Services, type: string, list: true }
+          - { name: year, label: Year, type: string }
+          - { name: description, label: Description, type: text }
+          - name: type
+            label: Type
+            type: select
+            default: vertical
+            options:
+              values: [vertical, horizontal, reel, static, branding, campaign, photo, motion]
+          - name: videos
+            label: Videos (the first one is shown)
+            type: object
+            list: true
+            fields:
+              - { name: src, label: "Upload video (MP4, keep it small)", type: file }
+              - { name: url, label: "…or paste a video link (large files hosted elsewhere)", type: string }
+              - { name: poster, label: "Cover image (a frame from the video)", type: image }
+              - name: ratio
+                label: Aspect ratio
+                type: select
+                default: "9:16"
+                options:
+                  values: ["9:16", "16:9", "1:1", "4:5", "4:3"]
+              - { name: duration, label: "Length in seconds (optional)", type: number }
+              - { name: hasAudio, label: Has sound, type: boolean, default: false }
+              - { name: alt, label: "Short description for screen readers", type: string }
+          - name: images
+            label: Images (used when there is no video)
+            type: object
+            list: true
+            fields:
+              - { name: src, label: Image, type: image }
+              - { name: alt, label: Short description, type: string }
+              - name: ratio
+                label: Aspect ratio
+                type: select
+                default: "4:5"
+                options:
+                  values: ["4:5", "1:1", "9:16", "16:9", "4:3"]
+          - { name: caseStudyUrl, label: "Case study link (optional)", type: string }
+      - name: featuredFilm
+        label: Featured film
+        type: object
+        fields: *project_fields
+
+  # ---------------------------------------------------------------- Agency, contact, location
+  - name: agency
+    label: Agency & contact
+    type: file
+    path: content/agency.json
+    format: json
+    fields:
+      - { name: name, label: Agency name, type: string }
+      - { name: descriptor, label: Descriptor, type: string }
+      - { name: city, label: City, type: string }
+      - { name: country, label: Country, type: string }
+      - name: logo
+        label: Logo (leave empty to keep the typographic wordmark)
+        type: object
+        fields:
+          - { name: src, label: "Logo file (white SVG or PNG)", type: image }
+          - { name: alt, label: Logo text alternative, type: string }
+      - name: contact
+        label: Contact details (empty ones stay hidden on the site)
+        type: object
+        fields:
+          - { name: email, label: Email, type: string }
+          - { name: phone, label: Phone, type: string }
+          - { name: whatsapp, label: "WhatsApp (digits with country code, e.g. 201001234567)", type: string }
+          - { name: instagram, label: Instagram link, type: string }
+          - { name: facebook, label: Facebook link, type: string }
+          - { name: linkedin, label: LinkedIn link, type: string }
+      - name: location
+        label: Location
+        type: object
+        fields:
+          - { name: addressLines, label: Address lines, type: string, list: true }
+          - { name: mapsUrl, label: "Google Maps link (“auto” builds one from the address, empty hides it)", type: string, default: auto }
+      - name: nav
+        label: Menu
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - name: href
+            label: Goes to
+            type: select
+            options:
+              values: ["#work", "#film", "#capabilities", "#philosophy", "#process", "#about", "#location", "#contact"]
+      - name: locale
+        label: Language (advanced)
+        type: object
+        fields:
+          - { name: lang, label: Language code, type: string, default: en }
+          - name: dir
+            label: Direction
+            type: select
+            default: ltr
+            options:
+              values: [ltr, rtl]
+
+  # ---------------------------------------------------------------- Capabilities + process
+  - name: services
+    label: Capabilities & process
+    type: file
+    path: content/services.json
+    format: json
+    fields:
+      - name: capabilities
+        label: Capabilities
+        type: object
+        fields:
+          - { name: title, label: Section title, type: string }
+          - name: items
+            label: Capabilities
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Name, type: string }
+              - { name: text, label: Short description, type: text }
+      - name: process
+        label: Process
+        type: object
+        fields:
+          - { name: title, label: Section title, type: string }
+          - name: steps
+            label: Steps (numbered automatically)
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Name, type: string }
+              - { name: text, label: Short description, type: text }
+
+  # ---------------------------------------------------------------- Page copy
+  - name: copy
+    label: Page text
+    type: file
+    path: content/copy.json
+    format: json
+    fields:
+      - name: hero
+        label: Hero (top of page)
+        type: object
+        fields:
+          - { name: lines, label: Headline lines, type: string, list: true }
+          - { name: lede, label: Paragraph, type: text }
+          - { name: scrollLabel, label: Scroll label, type: string }
+      - name: intro
+        label: Intro
+        type: object
+        fields:
+          - { name: label, label: Small label, type: string }
+          - { name: text, label: Text, type: text }
+      - { name: marquee, label: Moving strip words, type: string, list: true }
+      - name: work
+        label: Selected work
+        type: object
+        fields:
+          - { name: title, label: Section title, type: string }
+      - name: film
+        label: Featured film
+        type: object
+        fields:
+          - { name: label, label: Small label, type: string }
+          - { name: title, label: Title lines, type: string, list: true }
+          - { name: text, label: Text, type: text }
+          - { name: playLabel, label: Play button text, type: string }
+      - name: philosophy
+        label: Philosophy
+        type: object
+        fields:
+          - { name: label, label: Small label, type: string }
+          - { name: statement, label: Statement lines, type: string, list: true }
+          - name: points
+            label: Points
+            type: object
+            list: true
+            fields:
+              - { name: term, label: Word, type: string }
+              - { name: text, label: Text, type: text }
+      - name: about
+        label: About
+        type: object
+        fields:
+          - { name: title, label: Section title, type: string }
+          - { name: statement, label: Statement lines, type: string, list: true }
+          - { name: story, label: Paragraphs, type: text, list: true }
+          - name: team
+            label: Team (hidden while empty)
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Name, type: string }
+              - { name: role, label: Role, type: string }
+              - { name: photo, label: Photo, type: image }
+          - { name: culture, label: "Culture lines (hidden while empty)", type: string, list: true }
+          - name: locations
+            label: Other offices (hidden while empty)
+            type: object
+            list: true
+            fields:
+              - { name: city, label: City, type: string }
+              - { name: addressLines, label: Address lines, type: string, list: true }
+      - name: location
+        label: Location section
+        type: object
+        fields:
+          - { name: label, label: Small label, type: string }
+          - { name: mapsLabel, label: Map link text, type: string }
+      - name: cta
+        label: Contact section
+        type: object
+        fields:
+          - { name: label, label: Small label, type: string }
+          - { name: lines, label: Headline lines, type: string, list: true }
+          - { name: buttonLabel, label: Button text (when contact details exist), type: string }
+          - { name: visitLabel, label: Button text (map only), type: string }
+      - name: footer
+        label: Footer
+        type: object
+        fields:
+          - { name: backToTop, label: Back to top text, type: string }
+          - { name: rights, label: Rights line, type: string }

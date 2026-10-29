@@ -1,0 +1,50 @@
+{
+  "projects": [
+    {
+      "id": "project-01",
+      "name": "",
+      "client": "",
+      "industry": "",
+      "services": [],
+      "year": "",
+      "description": "",
+      "type": "motion",
+      "images": [],
+      "videos": [
+        {
+          "src": "assets/media/project-01.mp4",
+          "url": "",
+          "poster": "assets/media/project-01-poster.jpg",
+          "ratio": "9:16",
+          "duration": 4,
+          "hasAudio": false,
+          "alt": "Product film: a perfume bottle on marble in warm light"
+        }
+      ],
+      "caseStudyUrl": ""
+    }
+  ],
+  "featuredFilm": {
+    "id": "film-01",
+    "name": "",
+    "client": "",
+    "industry": "",
+    "services": [],
+    "year": "",
+    "description": "",
+    "type": "vertical",
+    "images": [],
+    "videos": [
+      {
+        "src": "assets/media/film-01.mp4",
+        "url": "",
+        "poster": "assets/media/film-01-poster.jpg",
+        "ratio": "9:16",
+        "duration": 32,
+        "hasAudio": true,
+        "alt": "A man in a white t-shirt seated in an armchair, speaking to camera"
+      }
+    ],
+    "caseStudyUrl": ""
+  }
+}

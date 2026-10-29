@@ -1,0 +1,22 @@
+{
+  "capabilities": {
+    "title": "Capabilities",
+    "items": [
+      { "name": "Strategy", "text": "Reading the market from higher ground. Positioning, audiences and the plan that follows." },
+      { "name": "Creative", "text": "Ideas made to be noticed in a crowded feed and remembered after it." },
+      { "name": "Content", "text": "Social, video and photography made for the platforms people actually use." },
+      { "name": "Media", "text": "Placing the work where attention is, and moving with it." },
+      { "name": "Production", "text": "Shoots, edits and motion, from first frame to final export." }
+    ]
+  },
+  "process": {
+    "title": "Process",
+    "steps": [
+      { "name": "Discover", "text": "We learn the brand, the audience and the ground it stands on." },
+      { "name": "Think", "text": "We take the high view and find the angle others miss." },
+      { "name": "Create", "text": "The idea becomes the work: film, design, content, campaigns." },
+      { "name": "Launch", "text": "We put it in front of the right people at the right moment." },
+      { "name": "Improve", "text": "We read what happened, honestly, and sharpen the next move." }
+    ]
+  }
+}

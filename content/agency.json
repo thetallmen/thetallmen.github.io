@@ -1,0 +1,32 @@
+{
+  "name": "THE TALL MEN",
+  "descriptor": "Creative Marketing Agency",
+  "city": "Cairo",
+  "country": "Egypt",
+  "logo": {
+    "src": "",
+    "alt": "The Tall Men"
+  },
+  "location": {
+    "addressLines": ["Al Banafseg Villas 1", "Cairo, Egypt"],
+    "mapsUrl": "auto"
+  },
+  "contact": {
+    "email": "",
+    "phone": "",
+    "whatsapp": "",
+    "instagram": "",
+    "facebook": "",
+    "linkedin": ""
+  },
+  "nav": [
+    { "label": "Work", "href": "#work" },
+    { "label": "Capabilities", "href": "#capabilities" },
+    { "label": "About", "href": "#about" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "locale": {
+    "lang": "en",
+    "dir": "ltr"
+  }
+}
