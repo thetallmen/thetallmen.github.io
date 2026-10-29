@@ -10,13 +10,14 @@ import { FeaturedFilm, VideoModal, initVideoModal, initLazyVideos } from './comp
 import { Capabilities, Clients, Philosophy, Process } from './components/Capabilities.js';
 import { About, Location } from './components/About.js';
 import { CTA } from './components/CTA.js';
+import { Archive, initArchive, Lightbox, initLightbox } from './components/Archive.js';
 import { Footer } from './components/Footer.js';
 import { initCustomCursor } from './components/CustomCursor.js';
 import { runLoader } from './components/Loader.js';
 import { initReveals, playHeroEntrance, initScrollEffects, initMagnetic, initAnchors } from './motion.js';
 
 async function start() {
-  const { agency, nav, copy, contact, location, projects, featuredFilm, locale } = await loadContent();
+  const { agency, nav, copy, contact, location, projects, featured, featuredFilm, locale } = await loadContent();
 
   document.documentElement.lang = locale.lang;
   document.documentElement.dir = locale.dir;
@@ -27,7 +28,8 @@ async function start() {
     Hero({ agency, copy }),
     Intro({ copy }),
     copy.marquee.length ? Marquee({ copy }) : '',
-    projects.length ? Work({ copy, projects }) : '',
+    featured.length ? Work({ copy, projects: featured, total: projects.length }) : '',
+    projects.length > featured.length ? Archive({ projects }) : '',
     featuredFilm ? FeaturedFilm({ copy, film: featuredFilm }) : '',
     copy.capabilities.items.length ? Capabilities({ copy }) : '',
     copy.clients.items.length ? Clients({ copy }) : '',
@@ -39,7 +41,7 @@ async function start() {
   ].join('');
 
   $('[data-slot="footer"]').innerHTML = Footer({ agency, nav, contact, copy });
-  $('[data-slot="modal"]').innerHTML = VideoModal();
+  $('[data-slot="modal"]').innerHTML = VideoModal() + Lightbox();
 
   initHeader();
   initReveals();
@@ -48,6 +50,8 @@ async function start() {
   initAnchors();
   initVideoModal();
   initLazyVideos();
+  initArchive();
+  initLightbox(projects);
   initCustomCursor();
 
   document.documentElement.classList.add('is-ready');

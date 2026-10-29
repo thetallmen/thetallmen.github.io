@@ -1,27 +1,207 @@
 {
   "projects": [
     {
-      "id": "project-01",
-      "name": "",
-      "client": "",
-      "industry": "",
-      "services": [],
-      "year": "",
-      "description": "",
-      "type": "motion",
-      "images": [],
+      "id": "byd-cairo-west", "name": "BYD — Cairo West launch", "client": "BYD", "industry": "Automotive",
+      "services": ["Event coverage", "Video editing"], "year": "", "featured": true,
+      "description": "Launch-night coverage: the stage, the guests and the first look at the cars.",
+      "type": "vertical", "images": [],
+      "videos": [{ "src": "assets/work/v/byd-launch.mp4", "preview": "assets/work/v/byd-launch-loop.mp4", "poster": "assets/work/v/byd-launch.jpg", "ratio": "9:16", "duration": 55, "hasAudio": true, "alt": "BYD car launch event at night" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "kanzel", "name": "Kanzel — Not just a drink", "client": "Kanzel Restaurant & Lounge", "industry": "Food & Beverage",
+      "services": ["Concept", "Graphic design"], "year": "", "featured": true,
+      "description": "Two cocktails toast inside a classical painting: the drink as a work of art.",
+      "type": "static",
+      "images": [
+        { "src": "assets/work/d/kanzel-art.jpg", "alt": "Two cocktail glasses toasting inside a gilded painting frame", "ratio": "4:5" },
+        { "src": "assets/work/d/kanzel-milanese.jpg", "alt": "Chicken milanese on spaghetti framed by dark leaves", "ratio": "4:5" }
+      ],
+      "videos": [], "caseStudyUrl": ""
+    },
+    {
+      "id": "protect-me", "name": "Protect Me — Luxury car care", "client": "Protect Me", "industry": "Automotive",
+      "services": ["Commercial", "Video editing"], "year": "", "featured": true,
+      "description": "Paint protection on luxury cars under a hexagon light ceiling.",
+      "type": "vertical", "images": [],
+      "videos": [{ "src": "assets/work/v/protect-me.mp4", "preview": "assets/work/v/protect-me-loop.mp4", "poster": "assets/work/v/protect-me.jpg", "ratio": "9:16", "duration": 35, "hasAudio": true, "alt": "Detailing a black luxury car under hexagon lights" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "julis", "name": "Juli's — Mawlid & delivery", "client": "Juli's Restaurant & Cafe", "industry": "Food & Beverage",
+      "services": ["Concept", "Graphic design"], "year": "", "featured": true,
+      "description": "A Mawlid bride built from traditional sweets, and a delivery campaign: Stay in.",
+      "type": "static",
+      "images": [
+        { "src": "assets/work/d/julis-mawlid.jpg", "alt": "A Mawlid bride figure made of traditional sweets", "ratio": "4:5" },
+        { "src": "assets/work/d/julis-stay-in.jpg", "alt": "Juli's paper bag on the bonnet of a classic car", "ratio": "4:5" },
+        { "src": "assets/work/d/julis-delivery.jpg", "alt": "Delivery rider holding a Juli's bag outside the restaurant", "ratio": "4:5" }
+      ],
+      "videos": [], "caseStudyUrl": ""
+    },
+    {
+      "id": "deer-muscle", "name": "Deer Muscle — Pure whey", "client": "Deer Muscle", "industry": "Fitness",
+      "services": ["Commercial", "Video editing"], "year": "", "featured": true,
+      "description": "A red-lit gym film built around the training and the product.",
+      "type": "vertical", "images": [],
+      "videos": [{ "src": "assets/work/v/deer-muscle.mp4", "preview": "assets/work/v/deer-muscle-loop.mp4", "poster": "assets/work/v/deer-muscle.jpg", "ratio": "9:16", "duration": 61, "hasAudio": true, "alt": "Athlete training in a red-lit gym" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "hala-car", "name": "Hala Car — Founding Day & Ramadan", "client": "Hala Car", "industry": "Automotive",
+      "services": ["Concept", "Graphic design"], "year": "", "featured": true,
+      "description": "Seasonal offer campaigns for a Saudi car dealer.",
+      "type": "static",
+      "images": [
+        { "src": "assets/work/d/hala-founding-day.jpg", "alt": "SUV framed between a camel's legs at sunset", "ratio": "4:5" },
+        { "src": "assets/work/d/hala-ramadan.jpg", "alt": "Car inside a paper shopping bag with a Ramadan lantern", "ratio": "4:5" }
+      ],
+      "videos": [], "caseStudyUrl": ""
+    },
+    {
+      "id": "fertiglobe", "name": "Fertiglobe × Plug — Green hydrogen", "client": "Fertiglobe", "industry": "Corporate & Real Estate",
+      "services": ["Aerial film", "Video editing"], "year": "", "featured": true,
+      "description": "Aerial and ground film of a green hydrogen facility.",
+      "type": "horizontal", "images": [],
+      "videos": [{ "src": "assets/work/v/fertiglobe.mp4", "preview": "assets/work/v/fertiglobe-loop.mp4", "poster": "assets/work/v/fertiglobe.jpg", "ratio": "16:9", "duration": 44, "hasAudio": true, "alt": "Aerial view of a green hydrogen plant" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "al-salem", "name": "Al Salem Holding — ACE Awards night", "client": "Al Salem Holding", "industry": "Corporate & Real Estate",
+      "services": ["Event film", "Video editing"], "year": "", "featured": true,
+      "description": "A cinematic film of the evening, from arrival to the stage.",
+      "type": "horizontal", "images": [],
+      "videos": [{ "src": "assets/work/v/al-salem.mp4", "preview": "assets/work/v/al-salem-loop.mp4", "poster": "assets/work/v/al-salem.jpg", "ratio": "16:9", "duration": 60, "hasAudio": true, "alt": "Guests arriving at a corporate awards evening" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "shogun", "name": "Shogun", "client": "Shogun", "industry": "Food & Beverage",
+      "services": ["Brand film"], "year": "", "featured": false, "description": "", "type": "vertical", "images": [],
+      "videos": [{ "src": "assets/work/v/shogun.mp4", "preview": "assets/work/v/shogun-loop.mp4", "poster": "assets/work/v/shogun.jpg", "ratio": "9:16", "duration": 57, "hasAudio": true, "alt": "Japanese restaurant interior and sushi" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "trivium-square", "name": "Trivium Square", "client": "Trivium Square", "industry": "Corporate & Real Estate",
+      "services": ["Aerial film"], "year": "", "featured": false, "description": "", "type": "horizontal", "images": [],
+      "videos": [{ "src": "assets/work/v/trivium-square.mp4", "preview": "assets/work/v/trivium-square-loop.mp4", "poster": "assets/work/v/trivium-square.jpg", "ratio": "16:9", "duration": 58, "hasAudio": true, "alt": "Aerial view of a commercial building" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "asala-al-khaleej", "name": "Asala Al Khaleej", "client": "Asala Al Khaleej Car Rental", "industry": "Automotive",
+      "services": ["Commercial"], "year": "", "featured": false, "description": "", "type": "vertical", "images": [],
+      "videos": [{ "src": "assets/work/v/asala-al-khaleej.mp4", "preview": "assets/work/v/asala-al-khaleej-loop.mp4", "poster": "assets/work/v/asala-al-khaleej.jpg", "ratio": "9:16", "duration": 23, "hasAudio": true, "alt": "Luxury car rental showroom" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "suzuki", "name": "Suzuki", "client": "Suzuki", "industry": "Automotive",
+      "services": ["Showroom film"], "year": "", "featured": false, "description": "", "type": "vertical", "images": [],
+      "videos": [{ "src": "assets/work/v/suzuki.mp4", "preview": "assets/work/v/suzuki-loop.mp4", "poster": "assets/work/v/suzuki.jpg", "ratio": "9:16", "duration": 25, "hasAudio": true, "alt": "White Suzuki SUV in a showroom" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "eagles", "name": "Eagles", "client": "Eagles Restaurant & Cafe", "industry": "Food & Beverage",
+      "services": ["Social content"], "year": "", "featured": false, "description": "", "type": "reel", "images": [],
       "videos": [
-        {
-          "src": "assets/media/project-01.mp4",
-          "url": "",
-          "poster": "assets/media/project-01-poster.jpg",
-          "ratio": "9:16",
-          "duration": 4,
-          "hasAudio": false,
-          "alt": "Product film: a perfume bottle on marble in warm light"
-        }
+        { "src": "assets/work/v/eagles-barista.mp4", "preview": "assets/work/v/eagles-barista-loop.mp4", "poster": "assets/work/v/eagles-barista.jpg", "ratio": "9:16", "duration": 11, "hasAudio": true, "alt": "Barista preparing a blue drink" },
+        { "src": "assets/work/v/eagles-venue.mp4", "preview": "assets/work/v/eagles-venue-loop.mp4", "poster": "assets/work/v/eagles-venue.jpg", "ratio": "9:16", "duration": 22, "hasAudio": true, "alt": "Eagles cafe interior and menu" }
       ],
       "caseStudyUrl": ""
+    },
+    {
+      "id": "croma-saypha", "name": "Croma × Saypha", "client": "Croma", "industry": "Beauty & Grooming",
+      "services": ["Event coverage"], "year": "", "featured": false, "description": "", "type": "horizontal", "images": [],
+      "videos": [{ "src": "assets/work/v/croma-saypha.mp4", "preview": "assets/work/v/croma-saypha-loop.mp4", "poster": "assets/work/v/croma-saypha.jpg", "ratio": "16:9", "duration": 60, "hasAudio": true, "alt": "Aesthetics brand event with live demonstrations" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "elegant", "name": "Elegant", "client": "Elegant", "industry": "Beauty & Grooming",
+      "services": ["Brand film"], "year": "", "featured": false, "description": "", "type": "horizontal", "images": [],
+      "videos": [{ "src": "assets/work/v/elegant.mp4", "preview": "assets/work/v/elegant-loop.mp4", "poster": "assets/work/v/elegant.jpg", "ratio": "16:9", "duration": 38, "hasAudio": true, "alt": "Barber at work in a modern salon" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "kitchen-box", "name": "Kitchen Box", "client": "Kitchen Box", "industry": "Interiors",
+      "services": ["Showroom film"], "year": "", "featured": false, "description": "", "type": "vertical", "images": [],
+      "videos": [{ "src": "assets/work/v/kitchen-box.mp4", "preview": "assets/work/v/kitchen-box-loop.mp4", "poster": "assets/work/v/kitchen-box.jpg", "ratio": "9:16", "duration": 37, "hasAudio": true, "alt": "Dark wood and black kitchen interior" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "g-class", "name": "G-Class lifestyle", "client": "", "industry": "Lifestyle",
+      "services": ["Social content"], "year": "", "featured": false, "description": "", "type": "vertical", "images": [],
+      "videos": [{ "src": "assets/work/v/g-class.mp4", "preview": "assets/work/v/g-class-loop.mp4", "poster": "assets/work/v/g-class.jpg", "ratio": "9:16", "duration": 24, "hasAudio": true, "alt": "Woman in a red coat beside a G-Class" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "heritage-film", "name": "Egyptian heritage film", "client": "", "industry": "Food & Beverage",
+      "services": ["Commercial"], "year": "", "featured": false, "description": "", "type": "vertical", "images": [],
+      "videos": [{ "src": "assets/work/v/heritage-film.mp4", "preview": "assets/work/v/heritage-film-loop.mp4", "poster": "assets/work/v/heritage-film.jpg", "ratio": "9:16", "duration": 48, "hasAudio": true, "alt": "A snack box carried through scenes of Egyptian heritage" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "dessert", "name": "Chocolate pour", "client": "", "industry": "Food & Beverage",
+      "services": ["Food film"], "year": "", "featured": false, "description": "", "type": "reel", "images": [],
+      "videos": [{ "src": "assets/work/v/dessert.mp4", "preview": "assets/work/v/dessert-loop.mp4", "poster": "assets/work/v/dessert.jpg", "ratio": "9:16", "duration": 7, "hasAudio": true, "alt": "Chocolate poured over profiteroles in slow motion" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "perfume-film", "name": "Perfume product film", "client": "", "industry": "Lifestyle",
+      "services": ["Product film"], "year": "", "featured": false, "description": "", "type": "motion", "images": [],
+      "videos": [{ "src": "assets/media/project-01.mp4", "url": "", "poster": "assets/media/project-01-poster.jpg", "ratio": "9:16", "duration": 4, "hasAudio": false, "alt": "Product film: a perfume bottle on marble in warm light" }],
+      "caseStudyUrl": ""
+    },
+    {
+      "id": "coex", "name": "COEX Juicery", "client": "COEX Juicery & Fruit Bar", "industry": "Food & Beverage",
+      "services": ["Graphic design"], "year": "", "featured": false, "description": "", "type": "static",
+      "images": [
+        { "src": "assets/work/d/coex-passion.jpg", "alt": "Passion fruit drink with illustrated doodles", "ratio": "4:5" },
+        { "src": "assets/work/d/coex-berry.jpg", "alt": "Berry mix drink with illustrated raspberry", "ratio": "4:5" }
+      ],
+      "videos": [], "caseStudyUrl": ""
+    },
+    {
+      "id": "lalique", "name": "Lalique — Mawlid", "client": "Lalique", "industry": "Food & Beverage",
+      "services": ["Graphic design"], "year": "", "featured": false, "description": "", "type": "static",
+      "images": [{ "src": "assets/work/d/lalique-mawlid.jpg", "alt": "Arabic calligraphy over a glowing night scene", "ratio": "4:5" }],
+      "videos": [], "caseStudyUrl": ""
+    },
+    {
+      "id": "cavo-island", "name": "Cavo Island — Eid", "client": "Cavo Island", "industry": "Food & Beverage",
+      "services": ["Concept", "Graphic design"], "year": "", "featured": false, "description": "", "type": "static",
+      "images": [{ "src": "assets/work/d/cavo-eid.jpg", "alt": "A sheep in sunglasses on a riverside restaurant terrace", "ratio": "4:5" }],
+      "videos": [], "caseStudyUrl": ""
+    },
+    {
+      "id": "you-cafe", "name": "YOU Cafe", "client": "YOU Cafe", "industry": "Food & Beverage",
+      "services": ["Graphic design"], "year": "", "featured": false, "description": "", "type": "static",
+      "images": [
+        { "src": "assets/work/d/you-lunch.jpg", "alt": "Table spread of pizza, pasta and drinks", "ratio": "4:5" },
+        { "src": "assets/work/d/you-eid.jpg", "alt": "Fatta dish with Eid calligraphy", "ratio": "4:5" }
+      ],
+      "videos": [], "caseStudyUrl": ""
+    },
+    {
+      "id": "roostic", "name": "Roostic", "client": "Roostic Fried Chicken", "industry": "Food & Beverage",
+      "services": ["Graphic design"], "year": "", "featured": false, "description": "", "type": "static",
+      "images": [{ "src": "assets/work/d/roostic.jpg", "alt": "Fried chicken spilling from a bucket", "ratio": "1:1" }],
+      "videos": [], "caseStudyUrl": ""
+    },
+    {
+      "id": "pierre", "name": "Pierre", "client": "Pierre", "industry": "Food & Beverage",
+      "services": ["Graphic design"], "year": "", "featured": false, "description": "", "type": "static",
+      "images": [{ "src": "assets/work/d/pierre-cordon.jpg", "alt": "Cordon bleu with fries on a green table setting", "ratio": "4:5" }],
+      "videos": [], "caseStudyUrl": ""
+    },
+    {
+      "id": "aman-al-daman", "name": "Aman Al Daman", "client": "Aman Al Daman Holding", "industry": "Automotive",
+      "services": ["Concept", "Graphic design"], "year": "", "featured": false, "description": "", "type": "static",
+      "images": [{ "src": "assets/work/d/aman-al-daman.jpg", "alt": "A man carrying a car inside a glass cube", "ratio": "4:5" }],
+      "videos": [], "caseStudyUrl": ""
+    },
+    {
+      "id": "the-address", "name": "The Address United", "client": "The Address United Co.", "industry": "Automotive",
+      "services": ["Graphic design"], "year": "", "featured": false, "description": "", "type": "static",
+      "images": [{ "src": "assets/work/d/address-luxury.jpg", "alt": "Black luxury SUV on a city overpass", "ratio": "4:5" }],
+      "videos": [], "caseStudyUrl": ""
     }
   ],
   "featuredFilm": {

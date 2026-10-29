@@ -24,7 +24,12 @@ content:
           - { name: id, label: "Short ID (lowercase-with-dashes, e.g. pure-scent-launch)", type: string, required: true }
           - { name: name, label: "Project name (empty shows “Project 01”)", type: string }
           - { name: client, label: Client, type: string }
-          - { name: industry, label: Industry, type: string }
+          - { name: featured, label: "Show on the homepage (Selected work)", type: boolean, default: false }
+          - name: industry
+            label: Sector (used by the filters)
+            type: select
+            options:
+              values: ["Food & Beverage", "Automotive", "Events", "Corporate & Real Estate", "Beauty & Grooming", "Fitness", "Interiors", "Lifestyle", "Fashion & Retail", "Education"]
           - { name: services, label: Services, type: string, list: true }
           - { name: year, label: Year, type: string }
           - { name: description, label: Description, type: text }
@@ -40,6 +45,7 @@ content:
             list: true
             fields:
               - { name: src, label: "Upload video (MP4, keep it small)", type: file }
+              - { name: preview, label: "Short silent loop for previews (optional, MP4 under 2 MB)", type: file }
               - { name: url, label: "…or paste a video link (large files hosted elsewhere)", type: string }
               - { name: poster, label: "Cover image (a frame from the video)", type: image }
               - name: ratio

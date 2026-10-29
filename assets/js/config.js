@@ -35,6 +35,7 @@ function normalizeProject(p = {}, i = 0) {
     year: str(p.year),
     description: str(p.description),
     type: str(p.type),
+    featured: Boolean(p.featured),
     images: arr(p.images)
       .filter((img) => img && img.src)
       .map((img) => ({ src: asset(img.src), alt: str(img.alt), ratio: str(img.ratio) || '4:5' })),
@@ -44,6 +45,8 @@ function normalizeProject(p = {}, i = 0) {
       .filter((v) => v.src)
       .map((v) => ({
         src: v.src,
+        // Short silent loop for in-page previews; the full film opens in the player.
+        preview: asset(v.preview) || v.src,
         poster: asset(v.poster),
         ratio: str(v.ratio) || '9:16',
         duration: Number(v.duration) || 0,
@@ -96,6 +99,8 @@ export async function loadContent() {
   copy.about.locations = arr(copy.about.locations);
 
   const projects = arr(work.projects).map(normalizeProject).filter((p) => p.videos.length || p.images.length);
+  // Homepage shows the featured projects; if none are marked, the first four.
+  const featured = projects.some((p) => p.featured) ? projects.filter((p) => p.featured) : projects.slice(0, 4);
   const film = work.featuredFilm ? normalizeProject(work.featuredFilm) : null;
 
   return {
@@ -115,6 +120,7 @@ export async function loadContent() {
     nav: arr(agency.nav),
     copy,
     projects,
+    featured,
     featuredFilm: film && film.videos.length ? film : null,
   };
 }

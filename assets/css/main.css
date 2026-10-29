@@ -512,6 +512,73 @@ body::after {
   .project__media--landscape { width: 100%; }
 }
 
+.project__count {
+  position: absolute; inset-block-start: 0.75rem; inset-inline-end: 0.75rem;
+  padding: 0.3rem 0.55rem; background: var(--paper); color: var(--ink);
+}
+.work__more { display: flex; justify-content: center; margin-block-start: clamp(4rem, 9vw, 7rem); }
+
+/* ---------- All work: filters + grid ---------- */
+
+.archive { padding-block: var(--section-y); border-block-start: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); scroll-margin-top: var(--header-h); }
+.archive__filters { display: grid; gap: 0.75rem; margin-block-end: 1rem; }
+.archive__group { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+  padding: 0.55rem 0.95rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  font-family: var(--font-meta); font-size: var(--fs-meta); letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.chip:hover { border-color: var(--red); color: var(--red); }
+.chip[aria-pressed='true'] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.archive__status { opacity: 0.6; margin-block-end: clamp(1.5rem, 3vw, 2.5rem); }
+.archive__grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 2vw, 1.75rem); align-items: start;
+}
+.card { display: grid; gap: 0.85rem; }
+/* One frame shape for a calm grid; the lightbox shows each piece uncropped. */
+.card__media {
+  position: relative; display: block; width: 100%; overflow: hidden;
+  aspect-ratio: 4 / 5; background: var(--paper-2);
+}
+.card__media img, .card__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
+.card__media video { opacity: 0; transition: opacity 0.4s ease; }
+.card__media.is-playing video { opacity: 1; }
+.card__media:hover img { transform: scale(1.04); }
+.card__media::after {
+  content: ''; position: absolute; inset-inline: 0; inset-block-end: 0; height: 4px;
+  background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform 0.7s var(--ease);
+}
+.card__media:hover::after, .card__media:focus-visible::after { transform: scaleX(1); }
+.card__count { position: absolute; inset-block-start: 0.6rem; inset-inline-end: 0.6rem; padding: 0.25rem 0.5rem; background: var(--paper); }
+.card__title { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.4rem, 2vw, 1.9rem); line-height: 1.05; text-transform: uppercase; }
+.card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; opacity: 0.6; margin-block-start: 0.3rem; }
+.card:hover .card__title { color: var(--red); }
+
+/* ---------- Lightbox ---------- */
+
+.lbox { position: fixed; inset: 0; z-index: 400; display: grid; grid-template-rows: auto 1fr auto; color: var(--paper); }
+.lbox__backdrop { position: absolute; inset: 0; background: var(--ink); opacity: 0; transition: opacity 0.4s ease; }
+.lbox.is-open .lbox__backdrop { opacity: 0.97; }
+.lbox__head, .lbox__nav, .lbox__stage { position: relative; z-index: 1; opacity: 0; transition: opacity 0.4s ease 0.1s; }
+.lbox.is-open .lbox__head, .lbox.is-open .lbox__nav, .lbox.is-open .lbox__stage { opacity: 1; }
+.lbox__head {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 1.5rem;
+  padding-block: calc(1rem + env(safe-area-inset-top, 0px)) 1rem;
+}
+.lbox__title { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.4rem, 2.5vw, 2.2rem); line-height: 1; text-transform: uppercase; }
+.lbox__count { opacity: 0.6; }
+.lbox__stage {
+  align-self: center; justify-self: center;
+  width: min(92vw, calc((100svh - 9rem) * 16 / 9)); max-height: calc(100svh - 9rem);
+  aspect-ratio: var(--ratio, 16 / 9);
+}
+.lbox__stage.is-portrait { width: auto; height: calc(100svh - 9rem - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); max-width: 92vw; }
+.lbox__stage img, .lbox__stage video { width: 100%; height: 100%; object-fit: contain; }
+.lbox__stage video { background: #000; }
+.lbox__nav { display: flex; justify-content: space-between; padding-block: 0.75rem calc(1rem + env(safe-area-inset-bottom, 0px)); }
+
 /* ---------- Featured film (the one dark section) ---------- */
 
 .film { padding-block: var(--section-y); }

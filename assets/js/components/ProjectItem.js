@@ -19,7 +19,7 @@ function facts(project) {
   const v = project.videos[0];
   const rows = [
     ['Client', project.client],
-    ['Industry', project.industry],
+    ['Sector', project.industry],
     ['Services', project.services.join(', ')],
     ['Year', project.year],
     ['Format', [TYPE_LABEL[project.type], v ? v.ratio : ''].filter(Boolean).join(' — ')],
@@ -43,15 +43,18 @@ function Media(project, title) {
       data-video-poster="${esc(v.poster)}" data-cursor="view" aria-label="Play ${esc(title)} in full screen">
       <span class="project__frame">
         <video class="project__video" muted loop playsinline preload="none" poster="${esc(v.poster)}"
-          data-lazy-video="${esc(v.src)}" aria-hidden="true" tabindex="-1"></video>
+          data-lazy-video="${esc(v.preview)}" aria-hidden="true" tabindex="-1"></video>
       </span>
     </button>`;
   }
   if (img) {
+    const more = project.images.length > 1 ? `<span class="project__count meta" aria-hidden="true">1 / ${project.images.length}</span>` : '';
     return `
-    <figure class="project__media project__media--${orientation}" style="--ratio:${ratio}">
+    <button class="project__media project__media--${orientation}" type="button" style="--ratio:${ratio}"
+      data-open-gallery="${esc(project.id)}" data-cursor="view" aria-label="View ${esc(title)}${project.images.length > 1 ? `, ${project.images.length} images` : ''}">
       <span class="project__frame"><img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy" decoding="async"></span>
-    </figure>`;
+      ${more}
+    </button>`;
   }
   return '';
 }
@@ -72,12 +75,13 @@ export function ProjectItem(project, index) {
   </article>`;
 }
 
-export function Work({ copy, projects }) {
+export function Work({ copy, projects, total = projects.length }) {
   return `
   <section class="work" id="work" aria-labelledby="work-title">
     ${SectionTitle({ id: 'work-title', title: copy.work.title, count: projects.length })}
     <div class="work__list wrap">
       ${projects.map(ProjectItem).join('')}
     </div>
+    ${total > projects.length ? `<div class="wrap work__more"><a class="btn-trace" href="#archive" data-magnetic><span>See all ${total} projects</span><span aria-hidden="true">↓</span></a></div>` : ''}
   </section>`;
 }
