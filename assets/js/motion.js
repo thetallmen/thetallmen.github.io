@@ -12,7 +12,7 @@ const root = document.documentElement;
 
 export function initFilm() {
   const reduce = prefersReducedMotion();
-  const scenes = $$('[data-scene]');
+  const scenes = $$('[data-part]');
 
   // 1. Entrances.
   if (reduce || !('IntersectionObserver' in window)) {
@@ -28,8 +28,21 @@ export function initFilm() {
     scenes.forEach((s) => { if (!s.hasAttribute('data-hero')) io.observe(s); });
   }
 
+  initTone(scenes);
   initChrome(reduce);
   if (!reduce) initCamera();
+}
+
+// One page, two lights: whichever part crosses the middle of the screen sets
+// the tone, and the whole page eases between white and black (CSS transition).
+function initTone(parts) {
+  const set = (tone) => { if (tone && root.dataset.tone !== tone) root.dataset.tone = tone; };
+  set(parts[0]?.dataset.tone || 'light');
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) set(e.target.dataset.tone); });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+  parts.forEach((p) => io.observe(p));
 }
 
 export function playOpening() {
@@ -67,8 +80,8 @@ function initCamera() {
   mm.add({ desktop: '(min-width: 900px)', mobile: '(max-width: 899px)' }, (ctx) => {
     const { desktop } = ctx.conditions;
 
-    $$('[data-scene]').forEach((scene) => {
-      const inner = $('.scene__inner', scene);
+    $$('[data-part]').forEach((scene) => {
+      const inner = $('.part__inner', scene);
       const stage = $('[data-stage]', scene);
 
       // Depth layers drift at their own speed: far moves against the scroll, near with it.
@@ -89,7 +102,7 @@ function initCamera() {
       }
 
       // Rack focus out as the next scene takes over (blur only on desktop, it's costly on phones).
-      if (inner && !scene.matches('.scene--reel, .scene--prints')) {
+      if (inner && !scene.matches('.part--reel, .part--prints')) {
         gsap.to(inner, {
           opacity: 0.15, scale: desktop ? 1.05 : 1.02, filter: desktop ? 'blur(10px)' : 'none', ease: 'none',
           scrollTrigger: { trigger: scene, start: 'bottom 70%', end: 'bottom 10%', scrub: true },
@@ -109,7 +122,7 @@ function initCamera() {
     // Markets light up one after another.
     $$('[data-markets] .market').forEach((m, i, all) => {
       ScrollTrigger.create({
-        trigger: m.closest('[data-scene]'), start: () => `top+=${(i / all.length) * 40}% 60%`,
+        trigger: m.closest('[data-part]'), start: () => `top+=${(i / all.length) * 40}% 60%`,
         onEnter: () => m.classList.add('is-lit'), onLeaveBack: () => m.classList.remove('is-lit'),
       });
     });

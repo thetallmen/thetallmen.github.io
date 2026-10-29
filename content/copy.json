@@ -1,88 +1,171 @@
 {
-  "hero": {
-    "lines": ["The", "Tall", "Men"],
-    "lede": "Creative marketing for brands that want to be *seen.*",
-    "keywords": ["Ideas", "Strategy", "Content", "Media", "Production", "AI"],
-    "scrollLabel": "Scroll to start the film",
-    "pose": "camera"
-  },
-  "intro": {
-    "label": "Scene 01 — The view",
-    "title": ["A higher", "perspective", "on *brands.*"],
-    "text": "Stand a head taller and the room looks different. You see over the noise, you notice the gap first, and you move before anyone else. That is how we work: a clearer view, a sharper read, a faster move.",
-    "keywords": ["People", "Ideas", "Culture", "Brands"],
-    "pose": "laptop"
-  },
-  "capabilitiesIntro": {
-    "label": "Scene 02 — The crew",
-    "title": ["Six crafts.", "One *studio.*"]
-  },
-  "sectors": {
-    "label": "Scene 03 — On set",
-    "title": ["We shoot where", "brands *live.*"],
-    "items": ["Events", "Advertising", "Gyms & Fitness", "Food & Beverage", "Automotive", "Real Estate", "Beauty", "AI Films"]
-  },
-  "reel": {
-    "label": "Scene 04 — The reel",
-    "title": ["Moving", "*pictures.*"],
-    "text": "Event films, commercials, gym campaigns, launches and AI films. Tap any frame to watch it with sound."
-  },
-  "designs": {
-    "label": "Scene 05 — The prints",
-    "title": ["Frames that", "*stop the scroll.*"],
-    "text": "Campaign key visuals and social design for restaurants, car brands, retail and occasions."
-  },
-  "markets": {
-    "label": "Scene 06 — On air",
-    "title": ["Media that", "*travels.*"],
-    "text": "We plan and run paid campaigns and media buying for brands across five markets.",
-    "items": [
-      { "name": "Egypt", "code": "EG" },
-      { "name": "Saudi Arabia", "code": "SA" },
-      { "name": "Iraq", "code": "IQ" },
-      { "name": "Algeria", "code": "DZ" },
-      { "name": "United States", "code": "US" }
-    ],
-    "pose": "mouse"
-  },
-  "marquee": ["See further", "See sooner", "Stand out", "Make people look"],
-  "work": { "title": "Selected *work*" },
-  "film": {
-    "label": "Featured film",
-    "title": ["The tall", "*man.*"],
-    "text": "The face of the agency, and the idea behind its name.",
-    "playLabel": "Play"
-  },
-  "clients": { "title": ["Brands", "we grow", "*with.*"], "note": "", "items": [] },
-  "philosophy": {
-    "label": "Scene 07 — The idea",
-    "statement": ["Tall is not a size.", "It is a *point of view.*"],
-    "points": [
-      { "term": "Presence", "text": "A tall man walks into a room and the room adjusts. A brand can do the same." },
-      { "term": "Perspective", "text": "From higher up, patterns show sooner. We read the market from there." },
-      { "term": "Precision", "text": "A clear view means fewer guesses. We find the right move, then make it fast." }
-    ]
-  },
-  "about": {
-    "title": "About",
-    "statement": ["Based in Cairo.", "Built to be *seen.*"],
-    "story": [
-      "The Tall Men is a creative marketing agency based in Cairo, Egypt, working with brands in Egypt, the Gulf, North Africa and the United States."
-    ],
-    "team": [], "culture": [], "locations": []
-  },
-  "location": { "label": "Studio", "mapsLabel": "Open in Google Maps" },
-  "cta": {
-    "label": "Final scene — Your move",
-    "lines": ["Let's", "make it", "*bigger.*"],
-    "text": "Have a project in mind? Let's build something that gets seen.",
-    "buttonLabel": "Get in touch",
-    "visitLabel": "Visit the studio",
-    "pose": "mouse"
-  },
-  "footer": {
-    "backToTop": "Back to the opening",
-    "rights": "All rights reserved.",
-    "keywords": ["Ideas", "People", "Brands", "Impact"]
-  }
+    "hero":  {
+                 "lines":  [
+                               "The",
+                               "Tall",
+                               "Men"
+                           ],
+                 "lede":  "Creative marketing for brands that want to be *seen.*",
+                 "keywords":  [
+                                  "Ideas",
+                                  "Strategy",
+                                  "Content",
+                                  "Media",
+                                  "Production",
+                                  "AI"
+                              ],
+                 "scrollLabel":  "Scroll to start the film",
+                 "pose":  null
+             },
+    "intro":  {
+                  "label":  "Scene 01 — The view",
+                  "title":  [
+                                "A higher",
+                                "perspective",
+                                "on *brands.*"
+                            ],
+                  "text":  "Stand a head taller and the room looks different. You see over the noise, you notice the gap first, and you move before anyone else. That is how we work: a clearer view, a sharper read, a faster move.",
+                  "keywords":  [
+                                   "People",
+                                   "Ideas",
+                                   "Culture",
+                                   "Brands"
+                               ],
+                  "pose":  "laptop"
+              },
+    "capabilitiesIntro":  {
+                              "label":  "Scene 02 — The crew",
+                              "title":  [
+                                            "Six crafts.",
+                                            "One *studio.*"
+                                        ]
+                          },
+    "sectors":  {
+                    "label":  "Scene 03 — On set",
+                    "title":  [
+                                  "We shoot where",
+                                  "brands *live.*"
+                              ],
+                    "items":  [
+                                  "Events",
+                                  "Advertising",
+                                  "Gyms \u0026 Fitness",
+                                  "Food \u0026 Beverage",
+                                  "Automotive",
+                                  "Real Estate",
+                                  "Beauty",
+                                  "AI Films"
+                              ]
+                },
+    "reel":  {
+                 "label":  "Scene 04 — The reel",
+                 "title":  [
+                               "Moving",
+                               "*pictures.*"
+                           ],
+                 "text":  "Event films, commercials, gym campaigns, launches and AI films. Tap any frame to watch it with sound."
+             },
+    "designs":  {
+                    "label":  "Scene 05 — The prints",
+                    "title":  [
+                                  "Frames that",
+                                  "*stop the scroll.*"
+                              ],
+                    "text":  "Campaign key visuals and social design for restaurants, car brands, retail and occasions."
+                },
+    "marquee":  [
+                    "See further",
+                    "See sooner",
+                    "Stand out",
+                    "Make people look"
+                ],
+    "work":  {
+                 "title":  "Selected *work*"
+             },
+    "film":  {
+                 "label":  "Featured film",
+                 "title":  [
+                               "The tall",
+                               "*man.*"
+                           ],
+                 "text":  "The face of the agency, and the idea behind its name.",
+                 "playLabel":  "Play"
+             },
+    "clients":  {
+                    "title":  [
+                                  "Brands",
+                                  "we grow",
+                                  "*with.*"
+                              ],
+                    "note":  "",
+                    "items":  [
+
+                              ]
+                },
+    "philosophy":  {
+                       "label":  "Scene 07 — The idea",
+                       "statement":  [
+                                         "Tall is not a size.",
+                                         "It is a *point of view.*"
+                                     ],
+                       "points":  [
+                                      {
+                                          "term":  "Presence",
+                                          "text":  "A tall man walks into a room and the room adjusts. A brand can do the same."
+                                      },
+                                      {
+                                          "term":  "Perspective",
+                                          "text":  "From higher up, patterns show sooner. We read the market from there."
+                                      },
+                                      {
+                                          "term":  "Precision",
+                                          "text":  "A clear view means fewer guesses. We find the right move, then make it fast."
+                                      }
+                                  ]
+                   },
+    "about":  {
+                  "title":  "About",
+                  "statement":  [
+                                    "Based in Cairo.",
+                                    "Built to be *seen.*"
+                                ],
+                  "story":  [
+                                "The Tall Men is a creative marketing agency based in Cairo, Egypt."
+                            ],
+                  "team":  [
+
+                           ],
+                  "culture":  [
+
+                              ],
+                  "locations":  [
+
+                                ]
+              },
+    "location":  {
+                     "label":  "Studio",
+                     "mapsLabel":  "Open in Google Maps"
+                 },
+    "cta":  {
+                "label":  "Final scene — Your move",
+                "lines":  [
+                              "Let\u0027s",
+                              "make it",
+                              "*bigger.*"
+                          ],
+                "text":  "Have a project in mind? Let\u0027s build something that gets seen.",
+                "buttonLabel":  "Get in touch",
+                "visitLabel":  "Visit the studio",
+                "pose":  "mouse"
+            },
+    "footer":  {
+                   "backToTop":  "Back to the opening",
+                   "rights":  "All rights reserved.",
+                   "keywords":  [
+                                    "Ideas",
+                                    "People",
+                                    "Brands",
+                                    "Impact"
+                                ]
+               }
 }

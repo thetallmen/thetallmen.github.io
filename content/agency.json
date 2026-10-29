@@ -24,16 +24,16 @@
                 },
     "nav":  [
                 {
-                    "href":  "#work",
-                    "label":  "Work"
-                },
-                {
                     "href":  "#capabilities",
                     "label":  "Crafts"
                 },
                 {
-                    "href":  "#markets",
-                    "label":  "Markets"
+                    "href":  "#work",
+                    "label":  "Films"
+                },
+                {
+                    "href":  "#designs",
+                    "label":  "Designs"
                 },
                 {
                     "href":  "#contact",

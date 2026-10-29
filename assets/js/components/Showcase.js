@@ -11,11 +11,11 @@ import { parseRatio, projectTitle } from './ProjectItem.js';
    ========================================================================= */
 
 const Head = (block, id) => `
-  <div class="scene__inner scene__inner--center">
-    <p class="meta scene__label" data-fx>${esc(block.label)}</p>
-    <h2 class="scene__title scene__title--center" id="${id}" aria-label="${esc(plain(block.title.join(' ')))}">${block.title
+  <div class="part__inner part__inner--center">
+    <p class="meta label" data-fx>${esc(block.label)}</p>
+    <h2 class="title title--center" id="${id}" aria-label="${esc(plain(block.title.join(' ')))}">${block.title
       .map((l) => `<span class="line" aria-hidden="true"><span class="line__i">${rich(l)}</span></span>`).join('')}</h2>
-    ${block.text ? `<p class="scene__text scene__text--center" data-fx>${esc(block.text)}</p>` : ''}
+    ${block.text ? `<p class="text text--center" data-fx>${esc(block.text)}</p>` : ''}
   </div>`;
 
 const Controls = (label) => `
@@ -31,10 +31,10 @@ export function Reel({ copy, projects }) {
   projects.forEach((p, i) => p.videos.forEach((v, k) => films.push({ title: projectTitle(p, i) + (k ? ` ${k + 1}` : ''), v })));
   if (!films.length) return '';
   return `
-  <section class="scene scene--reel" id="work" data-scene aria-labelledby="reel-title">
+  <section class="part part--reel" id="work" data-part data-tone="dark" aria-labelledby="reel-title">
     <div class="depth" aria-hidden="true"><div class="depth__glow"></div></div>
     ${Head(copy.reel, 'reel-title')}
-    <div class="cf cf--reel" data-cf="reel" aria-roledescription="carousel" aria-label="Films">
+    <div class="cf cf--reel" data-cf="reel" data-cf-autoplay="5000" aria-roledescription="carousel" aria-label="Films">
       <ul class="cf__track" data-cf-track>
         ${films.map((f, i) => {
           const [w, h] = parseRatio(f.v.ratio);
@@ -51,6 +51,7 @@ export function Reel({ copy, projects }) {
         }).join('')}
       </ul>
       ${Controls('film')}
+      <div class="cf__bar" aria-hidden="true"><span data-cf-bar></span></div>
     </div>
   </section>`;
 }
@@ -60,7 +61,7 @@ export function Prints({ copy, projects }) {
   projects.forEach((p, i) => p.images.forEach((img) => prints.push({ id: p.id, title: projectTitle(p, i), img })));
   if (!prints.length) return '';
   return `
-  <section class="scene scene--prints" id="designs" data-scene aria-labelledby="prints-title">
+  <section class="part part--prints" id="designs" data-part data-tone="dark" aria-labelledby="prints-title">
     <div class="depth" aria-hidden="true"><div class="depth__glow depth__glow--alt"></div></div>
     ${Head(copy.designs, 'prints-title')}
     <div class="cf cf--prints" data-cf="prints" data-cf-autoplay="3200" aria-roledescription="carousel" aria-label="Designs">
@@ -151,6 +152,7 @@ function setup(root) {
       if (!v) return;
       if (i === active && inView && !reduce && !document.documentElement.classList.contains('modal-open')) {
         if (!v.src) v.src = v.dataset.cfPreview;
+        if (!el.classList.contains('is-playing')) { try { v.currentTime = 0; } catch { /* not loaded yet */ } }
         v.play().then(() => el.classList.add('is-playing')).catch(() => {});
       } else { v.pause(); el.classList.remove('is-playing'); }
     });

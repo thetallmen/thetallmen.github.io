@@ -3,7 +3,7 @@
 import { loadContent } from './config.js';
 import { $ } from './lib/dom.js';
 import { Header, MobileMenu, initHeader } from './components/Header.js';
-import { Opening, Perspective, Crafts, Sectors, Markets, Idea, Finale } from './components/Scenes.js';
+import { Opening, Perspective, Crafts, Sectors, Idea, Finale } from './components/Scenes.js';
 import { Reel, Prints, initCarousels } from './components/Showcase.js';
 import { VideoModal, initVideoModal } from './components/VideoPlayer.js';
 import { Lightbox, initLightbox } from './components/Archive.js';
@@ -25,10 +25,9 @@ async function start() {
     Opening({ agency, copy }),
     Perspective({ copy }),
     copy.capabilities.items.length ? Crafts({ copy }) : '',
-    Sectors({ copy }),
     Reel({ copy, projects }),
+    Sectors({ copy }),
     Prints({ copy, projects }),
-    Markets({ copy }),
     Idea({ copy }),
     Finale({ copy, contact, location }),
   ].join('');
