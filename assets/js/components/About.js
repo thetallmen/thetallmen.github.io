@@ -30,7 +30,7 @@ function Culture(lines) {
 export function About({ copy }) {
   const a = copy.about;
   return `
-  <section class="about s-light" id="about" aria-labelledby="about-title">
+  <section class="about" id="about" aria-labelledby="about-title">
     ${SectionTitle({ id: 'about-title', title: a.title })}
     <div class="wrap about__grid">
       <p class="about__statement">${a.statement.map((l) => `<span class="about__line" data-reveal="words">${esc(l)}</span>`).join('')}</p>
@@ -47,7 +47,7 @@ export function Location({ copy, location }) {
   const href = mapsHref(location);
   const extra = copy.about.locations;
   return `
-  <section class="location s-dark" id="location" aria-labelledby="location-title">
+  <section class="location" id="location" aria-labelledby="location-title">
     <div class="wrap location__grid">
       <h2 class="meta" id="location-title">${esc(copy.location.label)}</h2>
       <address class="location__address" data-reveal="fade">

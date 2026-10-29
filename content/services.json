@@ -2,11 +2,75 @@
   "capabilities": {
     "title": "Capabilities",
     "items": [
-      { "name": "Strategy", "text": "Reading the market from higher ground. Positioning, audiences and the plan that follows." },
-      { "name": "Creative", "text": "Ideas made to be noticed in a crowded feed and remembered after it." },
-      { "name": "Content", "text": "Social, video and photography made for the platforms people actually use." },
-      { "name": "Media", "text": "Placing the work where attention is, and moving with it." },
-      { "name": "Production", "text": "Shoots, edits and motion, from first frame to final export." }
+      {
+        "name": "Strategy",
+        "tagline": "See further.",
+        "text": "Clear strategies that turn opportunities into real growth. We help you understand your market, your audience and your next move.",
+        "bullets": ["Market Research", "Brand Positioning", "Communication Strategy", "Campaign Planning"],
+        "keywords": ["Insights", "Planning", "Positioning", "Real impact"],
+        "figure": {
+          "src": "assets/figures/binoculars.jpg",
+          "alt": "The Tall Man looking into the distance through binoculars",
+          "trace": { "loop": { "cx": 29, "cy": 19, "rx": 28, "ry": 15, "rot": -24 } }
+        }
+      },
+      {
+        "name": "Creative",
+        "tagline": "Ideas that move.",
+        "text": "Ideas that grab attention and create real connections. We turn insights into creative concepts that people remember.",
+        "bullets": ["Brand Identity", "Creative Concepts", "Visual Design", "Art Direction"],
+        "keywords": ["Bold", "Ideas", "Real", "Impact"],
+        "figure": {
+          "src": "assets/figures/stylus.jpg",
+          "alt": "The Tall Man drawing on a graphic tablet with a stylus held close to the camera",
+          "trace": {
+            "sweep": { "x1": 64, "y1": 82, "x2": 104, "y2": 58 },
+            "slash": { "x1": 50, "y1": 15, "x2": 72, "y2": 13 }
+          }
+        }
+      },
+      {
+        "name": "Content",
+        "tagline": "Stories that travel.",
+        "text": "We create content that fits your brand, speaks your audience's language and keeps you ahead in the feed.",
+        "bullets": ["Social Media Content", "Reels & Motion", "Campaign Content", "Copywriting"],
+        "keywords": ["Ideas", "Videos", "Stories", "Engagement"],
+        "figure": {
+          "src": "assets/figures/phone.jpg",
+          "alt": "The Tall Man holding a smartphone close to the camera",
+          "trace": { "loop": { "cx": 48, "cy": 24, "rx": 33, "ry": 22, "rot": -6 } }
+        }
+      },
+      {
+        "name": "Media",
+        "tagline": "Reach higher.",
+        "text": "Data-driven campaigns that put your brand in front of the right people and deliver real results.",
+        "bullets": ["Paid Social", "Google Ads", "Media Planning", "Performance Optimization"],
+        "keywords": ["Target", "Analyze", "Optimize", "Scale"],
+        "figure": {
+          "src": "assets/figures/media.jpg",
+          "alt": "The Tall Man holding up a transparent screen of campaign charts",
+          "trace": {
+            "loop": { "cx": 44, "cy": 36, "rx": 20, "ry": 13, "rot": -26 },
+            "slash": { "x1": 12, "y1": 19, "x2": 32, "y2": 17 }
+          }
+        }
+      },
+      {
+        "name": "Production",
+        "tagline": "Ideas brought to life.",
+        "text": "From concept to final cut, we produce high-quality visuals that make your brand look its best.",
+        "bullets": ["Video Production", "Photography", "Editing & Motion Graphics", "2D/3D & Animation"],
+        "keywords": ["Concept", "Shoot", "Edit", "Deliver"],
+        "figure": {
+          "src": "assets/figures/clapper.jpg",
+          "alt": "The Tall Man in a studio beside a film light",
+          "trace": {
+            "loop": { "cx": 42, "cy": 30, "rx": 34, "ry": 22, "rot": -12 },
+            "slash": { "x1": 80, "y1": 36, "x2": 99, "y2": 34 }
+          }
+        }
+      }
     ]
   },
   "process": {

@@ -6,6 +6,8 @@ media:
   input: assets/uploads
   output: assets/uploads
 
+# Tip: wrap words in *asterisks* in any headline to show them in brand red.
+
 content:
   # ---------------------------------------------------------------- Portfolio
   - name: work
@@ -142,7 +144,45 @@ content:
             list: true
             fields:
               - { name: name, label: Name, type: string }
+              - { name: tagline, label: "Red tagline (e.g. See further.)", type: string }
               - { name: text, label: Short description, type: text }
+              - { name: bullets, label: Services list, type: string, list: true }
+              - { name: keywords, label: Side keywords, type: string, list: true }
+              - name: figure
+                label: Character image + red trace
+                type: object
+                fields: &figure_fields
+                  - { name: src, label: "Image (black figure on white background)", type: image }
+                  - { name: alt, label: Image description, type: string }
+                  - name: trace
+                    label: "Red trace position (advanced, % of the image 0–100)"
+                    type: object
+                    fields:
+                      - name: loop
+                        label: Circle around the object
+                        type: object
+                        fields:
+                          - { name: cx, label: Centre X, type: number }
+                          - { name: cy, label: Centre Y, type: number }
+                          - { name: rx, label: Width, type: number }
+                          - { name: ry, label: Height, type: number }
+                          - { name: rot, label: Rotation (degrees), type: number }
+                      - name: slash
+                        label: Line across the face
+                        type: object
+                        fields:
+                          - { name: x1, label: Start X, type: number }
+                          - { name: y1, label: Start Y, type: number }
+                          - { name: x2, label: End X, type: number }
+                          - { name: y2, label: End Y, type: number }
+                      - name: sweep
+                        label: Long gesture line
+                        type: object
+                        fields:
+                          - { name: x1, label: Start X, type: number }
+                          - { name: y1, label: Start Y, type: number }
+                          - { name: x2, label: End X, type: number }
+                          - { name: y2, label: End Y, type: number }
       - name: process
         label: Process
         type: object
@@ -168,14 +208,40 @@ content:
         type: object
         fields:
           - { name: lines, label: Headline lines, type: string, list: true }
-          - { name: lede, label: Paragraph, type: text }
+          - { name: lede, label: Tagline, type: text }
+          - { name: keywords, label: Side keywords, type: string, list: true }
           - { name: scrollLabel, label: Scroll label, type: string }
+          - { name: figure, label: Character image + red trace, type: object, fields: *figure_fields }
       - name: intro
-        label: Intro
+        label: About scene (A higher perspective)
         type: object
         fields:
           - { name: label, label: Small label, type: string }
+          - { name: title, label: Headline lines, type: string, list: true }
           - { name: text, label: Text, type: text }
+          - { name: keywords, label: Side keywords, type: string, list: true }
+          - { name: figure, label: Character image + red trace, type: object, fields: *figure_fields }
+      - name: capabilitiesIntro
+        label: Capabilities overview
+        type: object
+        fields:
+          - { name: label, label: Small label, type: string }
+          - { name: title, label: Headline lines, type: string, list: true }
+          - { name: figure, label: Character image + red trace, type: object, fields: *figure_fields }
+      - name: clients
+        label: Clients (hidden while empty)
+        type: object
+        fields:
+          - { name: title, label: Headline lines, type: string, list: true }
+          - { name: note, label: Small note, type: string }
+          - name: items
+            label: Clients
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Client name, type: string }
+              - { name: logo, label: Logo (black on white or transparent), type: image }
+              - { name: url, label: Website link (optional), type: string }
       - { name: marquee, label: Moving strip words, type: string, list: true }
       - name: work
         label: Selected work
@@ -238,11 +304,15 @@ content:
         fields:
           - { name: label, label: Small label, type: string }
           - { name: lines, label: Headline lines, type: string, list: true }
+          - { name: text, label: Text under the headline, type: text }
           - { name: buttonLabel, label: Button text (when contact details exist), type: string }
           - { name: visitLabel, label: Button text (map only), type: string }
+          - { name: figure, label: Character image + red trace, type: object, fields: *figure_fields }
       - name: footer
         label: Footer
         type: object
         fields:
           - { name: backToTop, label: Back to top text, type: string }
           - { name: rights, label: Rights line, type: string }
+          - { name: keywords, label: Side keywords, type: string, list: true }
+          - { name: figure, label: Footer image + red trace, type: object, fields: *figure_fields }

@@ -8,7 +8,7 @@ export function FeaturedFilm({ copy, film }) {
   const [w, h] = parseRatio(v.ratio);
   const title = film.name || copy.film.title.join(' ');
   return `
-  <section class="film s-light" id="film" aria-labelledby="film-title">
+  <section class="film s-ink" id="film" aria-labelledby="film-title">
     <div class="wrap film__grid">
       <div class="film__text">
         <p class="meta">${esc(copy.film.label)}</p>

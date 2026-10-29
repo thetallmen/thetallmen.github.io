@@ -24,15 +24,27 @@ export const hasFinePointer = () => mq.finePointer.matches;
 export const isDesktop = () => mq.desktop.matches && mq.finePointer.matches;
 export const saveData = () => Boolean(navigator.connection && navigator.connection.saveData);
 
+// Copy convention: wrap words in *asterisks* to set them in brand red.
+// e.g. "A higher *perspective* on brands."
+export const plain = (value) => String(value ?? '').replace(/\*/g, '');
+export const rich = (value) => esc(value).replace(/\*([^*]+)\*/g, '<span class="hl">$1</span>');
+
 // Wrap each word in a mask span so it can slide up. The readable text stays on
 // the parent through aria-label, and the word spans are hidden from screen readers.
+// *Marked* words keep their red highlight.
 export function splitWords(el) {
   if (!el || el.dataset.split === 'done') return [];
   const text = el.textContent.trim().replace(/\s+/g, ' ');
-  el.setAttribute('aria-label', text);
+  el.setAttribute('aria-label', plain(text));
+  let red = false;
   el.innerHTML = text
     .split(' ')
-    .map((w, i) => `<span class="w" aria-hidden="true"><span class="w-i" style="--i:${i}">${esc(w)}</span></span>`)
+    .map((raw, i) => {
+      if (raw.startsWith('*')) red = true;
+      const isRed = red;
+      if (raw.replace(/[.,!?;:]+$/, '').endsWith('*')) red = false;
+      return `<span class="w${isRed ? ' hl' : ''}" aria-hidden="true"><span class="w-i" style="--i:${i}">${esc(plain(raw))}</span></span>`;
+    })
     .join(' ');
   el.dataset.split = 'done';
   return $$('.w-i', el);

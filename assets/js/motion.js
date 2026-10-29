@@ -9,8 +9,10 @@ const root = document.documentElement;
 /* ---------- Reveal on enter ---------- */
 
 export function initReveals() {
-  const targets = $$('[data-reveal]');
-  targets.filter((el) => el.dataset.reveal === 'words').forEach(splitWords);
+  const words = $$('[data-reveal]');
+  words.filter((el) => el.dataset.reveal === 'words').forEach(splitWords);
+  // Figures: the character rises in, then the RED TRACE draws itself (CSS keys off .is-in).
+  const targets = words.concat($$('[data-fig]'));
 
   if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
     targets.forEach((el) => el.classList.add('is-in'));
@@ -33,7 +35,7 @@ export function playHeroEntrance() {
   const hero = $('[data-hero]');
   if (!hero) return;
   hero.classList.add('is-in');
-  $$('[data-reveal]', hero).forEach((el) => el.classList.add('is-in'));
+  $$('[data-reveal], [data-fig]', hero).forEach((el) => el.classList.add('is-in'));
 }
 
 /* ---------- Scroll + pointer driven effects (single rAF loop) ---------- */
@@ -76,6 +78,7 @@ export function initScrollEffects() {
     if (header && !root.classList.contains('menu-open')) {
       const down = y > lastY && y > vh * 0.6;
       header.classList.toggle('is-hidden', down);
+      header.classList.toggle('is-solid', y > 24);
     }
     lastY = y;
 

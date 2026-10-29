@@ -7,7 +7,7 @@ import { Hero } from './components/Hero.js';
 import { Intro, Marquee } from './components/Intro.js';
 import { Work } from './components/ProjectItem.js';
 import { FeaturedFilm, VideoModal, initVideoModal, initLazyVideos } from './components/VideoPlayer.js';
-import { Capabilities, Philosophy, Process } from './components/Capabilities.js';
+import { Capabilities, Clients, Philosophy, Process } from './components/Capabilities.js';
 import { About, Location } from './components/About.js';
 import { CTA } from './components/CTA.js';
 import { Footer } from './components/Footer.js';
@@ -30,6 +30,7 @@ async function start() {
     projects.length ? Work({ copy, projects }) : '',
     featuredFilm ? FeaturedFilm({ copy, film: featuredFilm }) : '',
     copy.capabilities.items.length ? Capabilities({ copy }) : '',
+    copy.clients.items.length ? Clients({ copy }) : '',
     Philosophy({ copy }),
     copy.process.steps.length ? Process({ copy }) : '',
     About({ copy }),

@@ -74,7 +74,7 @@ export function ProjectItem(project, index) {
 
 export function Work({ copy, projects }) {
   return `
-  <section class="work s-dark" id="work" aria-labelledby="work-title">
+  <section class="work" id="work" aria-labelledby="work-title">
     ${SectionTitle({ id: 'work-title', title: copy.work.title, count: projects.length })}
     <div class="work__list wrap">
       ${projects.map(ProjectItem).join('')}

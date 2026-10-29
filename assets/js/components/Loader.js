@@ -22,8 +22,8 @@ export function runLoader(agency) {
   el.innerHTML = `
     <div class="loader__mark" aria-hidden="true">
       ${agency.name.split(' ').map((w, i) => `<span class="loader__word${w === 'TALL' ? ' loader__word--tall' : ''}"><span style="--i:${i}">${esc(w)}</span></span>`).join('')}
-    </div>
-    <span class="loader__line" aria-hidden="true"></span>`;
+      <svg class="trace loader__trace" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M30 30 C48 6 90 10 97 40 C104 72 70 96 40 92 C10 88 -2 60 8 38 C16 22 34 14 52 16" pathLength="1"/></svg>
+    </div>`;
   el.hidden = false;
   requestAnimationFrame(() => el.classList.add('is-in'));
 

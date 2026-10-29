@@ -54,11 +54,40 @@ function normalizeProject(p = {}, i = 0) {
   };
 }
 
+// Character figure: image + RED TRACE settings. No image means no figure.
+function normalizeFigure(fig) {
+  if (!fig || !fig.src) return null;
+  return { src: asset(fig.src), alt: str(fig.alt), trace: fig.trace || {} };
+}
+
 export async function loadContent() {
   const [agency, copy, services, work] = await Promise.all(FILES.map(getJSON));
 
   copy.capabilities = services.capabilities || { title: 'Capabilities', items: [] };
-  copy.capabilities.items = arr(copy.capabilities.items);
+  copy.capabilities.items = arr(copy.capabilities.items).map((item) => ({
+    name: str(item.name),
+    tagline: str(item.tagline),
+    text: str(item.text),
+    bullets: arr(item.bullets),
+    keywords: arr(item.keywords),
+    figure: normalizeFigure(item.figure),
+  }));
+  copy.capabilitiesIntro = copy.capabilitiesIntro || { label: '', title: [] };
+  copy.capabilitiesIntro.title = arr(copy.capabilitiesIntro.title);
+  copy.capabilitiesIntro.figure = normalizeFigure(copy.capabilitiesIntro.figure);
+  copy.hero.keywords = arr(copy.hero.keywords);
+  copy.hero.figure = normalizeFigure(copy.hero.figure);
+  copy.intro.title = arr(copy.intro.title);
+  copy.intro.keywords = arr(copy.intro.keywords);
+  copy.intro.figure = normalizeFigure(copy.intro.figure);
+  copy.cta.figure = normalizeFigure(copy.cta.figure);
+  copy.footer.keywords = arr(copy.footer.keywords);
+  copy.footer.figure = normalizeFigure(copy.footer.figure);
+  copy.clients = copy.clients || { title: [], items: [] };
+  copy.clients.title = arr(copy.clients.title);
+  copy.clients.items = arr(copy.clients.items)
+    .filter((c) => c && (c.name || c.logo))
+    .map((c) => ({ name: str(c.name), logo: asset(c.logo), url: str(c.url) }));
   copy.process = services.process || { title: 'Process', steps: [] };
   copy.process.steps = arr(copy.process.steps);
   copy.marquee = arr(copy.marquee);
