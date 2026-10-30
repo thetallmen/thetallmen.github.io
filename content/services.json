@@ -1,50 +1,50 @@
 {
   "capabilities": {
-    "title": "Capabilities",
+    "title": "Services",
     "items": [
       {
-        "name": "Strategy", "tagline": "See further.", "pose": "binoculars",
+        "name": "Strategy", "tagline": "Know where to aim.", "pose": "binoculars", "sector": "",
         "text": "Clear strategies that turn opportunities into growth. We read your market, your audience and your next move.",
         "bullets": ["Market Research", "Brand Positioning", "Communication Strategy", "Campaign Planning"],
-        "keywords": ["Insights", "Planning", "Positioning"]
+        "figure": null
       },
       {
-        "name": "Creative", "tagline": "Ideas that move.", "pose": "stylus",
+        "name": "Creative", "tagline": "Ideas that move.", "pose": "stylus", "sector": "",
         "text": "Concepts and key visuals made to be noticed and remembered, from occasion posts to full campaigns.",
         "bullets": ["Brand Identity", "Campaign Concepts", "Key Visuals", "Art Direction"],
-        "keywords": ["Bold", "Ideas", "Craft"]
+        "figure": null
       },
       {
-        "name": "Content", "tagline": "Stories that travel.", "pose": "phone",
+        "name": "Content", "tagline": "Stories that travel.", "pose": "phone", "sector": "",
         "text": "Reels, social design and copy that fit the brand and speak the audience's language.",
         "bullets": ["Social Media Content", "Reels & Motion", "Influencer & UGC", "Copywriting"],
-        "keywords": ["Reels", "Stories", "Feed"]
+        "figure": null
       },
       {
-        "name": "Media Buying", "tagline": "Reach higher.", "pose": "mouse",
-        "text": "Paid campaigns planned, bought and optimised to put the work in front of the right people, in more than one market.",
+        "name": "Media Buying", "tagline": "The right people, at the right moment.", "pose": "mouse", "sector": "",
+        "text": "Paid campaigns planned, bought and optimised to put the work in front of the people who matter.",
         "bullets": ["Paid Social", "Google Ads", "Media Planning", "Performance Optimization"],
-        "keywords": ["Target", "Optimize", "Scale"]
+        "figure": null
       },
       {
-        "name": "Production", "tagline": "Ideas brought to life.", "pose": "clapper",
-        "text": "Commercials, event films, gym campaigns and product shoots, from concept to final cut.",
+        "name": "Production", "tagline": "From concept to final cut.", "pose": "clapper", "sector": "",
+        "text": "Commercials, event films, gym campaigns and product shoots, produced end to end.",
         "bullets": ["Commercials", "Event Coverage", "Photography", "Editing & Motion Graphics"],
-        "keywords": ["Shoot", "Edit", "Deliver"]
+        "figure": null
       },
       {
-        "name": "AI Production", "tagline": "Made to imagine.", "pose": "keyboard",
-        "text": "AI films and visuals for scenes a camera can't reach, directed with the same taste as a real shoot.",
+        "name": "AI Production", "tagline": "Scenes a camera can't reach.", "pose": "keyboard", "sector": "AI Films",
+        "text": "AI films and visuals directed with the same taste as a real shoot, alone or blended with live action.",
         "bullets": ["AI Films", "AI Key Visuals", "Concept Visualisation", "Hybrid Shoot + AI"],
-        "keywords": ["Prompt", "Direct", "Refine"]
+        "figure": null
       }
     ]
   },
   "process": {
-    "title": "Process",
+    "title": "How we work",
     "steps": [
       { "name": "Discover", "text": "We learn the brand, the audience and the ground it stands on." },
-      { "name": "Think", "text": "We take the high view and find the angle others miss." },
+      { "name": "Think", "text": "We find the angle others miss and turn it into one clear idea." },
       { "name": "Create", "text": "The idea becomes the work: film, design, content, campaigns." },
       { "name": "Launch", "text": "We put it in front of the right people at the right moment." },
       { "name": "Improve", "text": "We read what happened, honestly, and sharpen the next move." }

@@ -1,12 +1,13 @@
 # THE TALL MEN — admin panel (Pages CMS: https://app.pagescms.org, free)
 # Log in with your GitHub account. Every save is a commit on GitHub;
-# Netlify then redeploys the site automatically (about 1 minute).
+# GitHub Pages then republishes the site automatically (about 1 minute).
 
 media:
   input: assets/uploads
   output: assets/uploads
 
-# Tip: wrap words in *asterisks* in any headline to show them in brand red.
+# Tip: wrap one word in *asterisks* in a headline to set it in the italic serif;
+# the red marker (Red Trace) underlines or circles that word.
 
 content:
   # ---------------------------------------------------------------- Portfolio
@@ -24,12 +25,12 @@ content:
           - { name: id, label: "Short ID (lowercase-with-dashes, e.g. pure-scent-launch)", type: string, required: true }
           - { name: name, label: "Project name (empty shows “Project 01”)", type: string }
           - { name: client, label: Client, type: string }
-          - { name: featured, label: "Show on the homepage (Selected work)", type: boolean, default: false }
+          - { name: featured, label: "Show in Selected work (the rest goes to the archive)", type: boolean, default: false }
           - name: industry
             label: Sector (used by the filters)
             type: select
             options:
-              values: ["Food & Beverage", "Automotive", "Events", "Corporate & Real Estate", "Beauty & Grooming", "Fitness", "Interiors", "Lifestyle", "Fashion & Retail", "Education"]
+              values: ["Food & Beverage", "Automotive", "Events", "Corporate & Real Estate", "Beauty & Grooming", "Fitness", "Interiors", "Lifestyle", "AI Films", "Fashion & Retail", "Education"]
           - { name: services, label: Services, type: string, list: true }
           - { name: year, label: Year, type: string }
           - { name: description, label: Description, type: text }
@@ -71,10 +72,6 @@ content:
                 options:
                   values: ["4:5", "1:1", "9:16", "16:9", "4:3"]
           - { name: caseStudyUrl, label: "Case study link (optional)", type: string }
-      - name: featuredFilm
-        label: Featured film
-        type: object
-        fields: *project_fields
 
   # ---------------------------------------------------------------- Agency, contact, location
   - name: agency
@@ -119,7 +116,7 @@ content:
             label: Goes to
             type: select
             options:
-              values: ["#top", "#intro", "#capabilities", "#sectors", "#work", "#designs", "#markets", "#philosophy", "#process", "#contact"]
+              values: ["#top", "#work", "#services", "#archive", "#studio", "#process", "#contact"]
       - name: locale
         label: Language (advanced)
         type: object
@@ -132,63 +129,39 @@ content:
             options:
               values: [ltr, rtl]
 
-  # ---------------------------------------------------------------- Capabilities + process
+  # ---------------------------------------------------------------- Services + process
   - name: services
-    label: Capabilities & process
+    label: Services & process
     type: file
     path: content/services.json
     format: json
     fields:
       - name: capabilities
-        label: Capabilities
+        label: Services
         type: object
         fields:
           - { name: title, label: Section title, type: string }
           - name: items
-            label: Capabilities
+            label: Services
             type: object
             list: true
             fields:
               - { name: name, label: Name, type: string }
-              - { name: tagline, label: "Red tagline (e.g. See further.)", type: string }
+              - { name: tagline, label: "Tagline (italic, e.g. Know where to aim.)", type: string }
               - { name: text, label: Short description, type: text }
-              - { name: bullets, label: Services list, type: string, list: true }
-              - { name: keywords, label: Side keywords, type: string, list: true }
+              - { name: bullets, label: What we do (tags), type: string, list: true }
+              - name: pose
+                label: Object drawn when there is no character image
+                type: select
+                options:
+                  values: [binoculars, stylus, phone, mouse, clapper, keyboard, notebook]
+              - { name: sector, label: "Archive sector for the “See related work” link (optional)", type: string }
               - name: figure
-                label: Character image + red trace
+                label: Character image (replaces the drawn object)
                 type: object
                 fields: &figure_fields
-                  - { name: src, label: "Image (black figure on white background)", type: image }
+                  - { name: src, label: "Image (character holding this service's object)", type: image }
                   - { name: alt, label: Image description, type: string }
-                  - name: trace
-                    label: "Red trace position (advanced, % of the image 0–100)"
-                    type: object
-                    fields:
-                      - name: loop
-                        label: Circle around the object
-                        type: object
-                        fields:
-                          - { name: cx, label: Centre X, type: number }
-                          - { name: cy, label: Centre Y, type: number }
-                          - { name: rx, label: Width, type: number }
-                          - { name: ry, label: Height, type: number }
-                          - { name: rot, label: Rotation (degrees), type: number }
-                      - name: slash
-                        label: Line across the face
-                        type: object
-                        fields:
-                          - { name: x1, label: Start X, type: number }
-                          - { name: y1, label: Start Y, type: number }
-                          - { name: x2, label: End X, type: number }
-                          - { name: y2, label: End Y, type: number }
-                      - name: sweep
-                        label: Long gesture line
-                        type: object
-                        fields:
-                          - { name: x1, label: Start X, type: number }
-                          - { name: y1, label: Start Y, type: number }
-                          - { name: x2, label: End X, type: number }
-                          - { name: y2, label: End Y, type: number }
       - name: process
         label: Process
         type: object
@@ -213,97 +186,53 @@ content:
         label: Hero (top of page)
         type: object
         fields:
-          - { name: lines, label: Headline lines, type: string, list: true }
-          - { name: lede, label: Tagline, type: text }
-          - { name: keywords, label: Side keywords, type: string, list: true }
-          - { name: scrollLabel, label: Scroll label, type: string }
-          - { name: figure, label: Character image + red trace, type: object, fields: *figure_fields }
-      - name: intro
-        label: About scene (A higher perspective)
-        type: object
-        fields:
-          - { name: label, label: Small label, type: string }
-          - { name: title, label: Headline lines, type: string, list: true }
-          - { name: text, label: Text, type: text }
-          - { name: keywords, label: Side keywords, type: string, list: true }
-          - { name: figure, label: Character image + red trace, type: object, fields: *figure_fields }
-      - name: capabilitiesIntro
-        label: Capabilities overview
-        type: object
-        fields:
-          - { name: label, label: Small label, type: string }
-          - { name: title, label: Headline lines, type: string, list: true }
-          - { name: figure, label: Character image + red trace, type: object, fields: *figure_fields }
+          - { name: lines, label: "Headline lines (one *word* in the italic serif)", type: string, list: true }
+          - { name: lede, label: Text under the headline, type: text }
+          - { name: primaryLabel, label: Main button text, type: string }
+          - { name: secondaryLabel, label: Second button text, type: string }
+          - { name: figure, label: "Character image (with a camera), stands next to the film frame", type: object, fields: *figure_fields }
       - name: clients
-        label: Clients (hidden while empty)
+        label: Clients strip (names come from the portfolio)
         type: object
         fields:
-          - { name: title, label: Headline lines, type: string, list: true }
-          - { name: note, label: Small note, type: string }
-          - name: items
-            label: Clients
-            type: object
-            list: true
-            fields:
-              - { name: name, label: Client name, type: string }
-              - { name: logo, label: Logo (black on white or transparent), type: image }
-              - { name: url, label: Website link (optional), type: string }
-      - { name: marquee, label: Moving strip words, type: string, list: true }
+          - { name: label, label: Small label, type: string }
+          - { name: note, label: Line under the names, type: text }
       - name: work
         label: Selected work
         type: object
         fields:
-          - { name: title, label: Section title, type: string }
-      - name: film
-        label: Featured film
+          - { name: label, label: Small label, type: string }
+          - { name: title, label: Headline lines, type: string, list: true }
+          - { name: text, label: Text, type: text }
+      - name: services
+        label: Services heading
         type: object
         fields:
           - { name: label, label: Small label, type: string }
-          - { name: title, label: Title lines, type: string, list: true }
+          - { name: title, label: Headline lines, type: string, list: true }
           - { name: text, label: Text, type: text }
-          - { name: playLabel, label: Play button text, type: string }
-      - name: philosophy
-        label: Philosophy
+          - { name: workLabel, label: "“See related work” link text", type: string }
+      - name: archive
+        label: Archive heading
+        type: object
+        fields:
+          - { name: label, label: Small label, type: string }
+          - { name: title, label: Headline lines, type: string, list: true }
+      - name: studio
+        label: Studio (about)
         type: object
         fields:
           - { name: label, label: Small label, type: string }
           - { name: statement, label: Statement lines, type: string, list: true }
+          - { name: story, label: About text, type: text }
+          - { name: figure, label: "Character image (with a notebook or laptop)", type: object, fields: *figure_fields }
           - name: points
             label: Points
             type: object
             list: true
             fields:
-              - { name: term, label: Word, type: string }
+              - { name: term, label: Title, type: string }
               - { name: text, label: Text, type: text }
-      - name: about
-        label: About
-        type: object
-        fields:
-          - { name: title, label: Section title, type: string }
-          - { name: statement, label: Statement lines, type: string, list: true }
-          - { name: story, label: Paragraphs, type: text, list: true }
-          - name: team
-            label: Team (hidden while empty)
-            type: object
-            list: true
-            fields:
-              - { name: name, label: Name, type: string }
-              - { name: role, label: Role, type: string }
-              - { name: photo, label: Photo, type: image }
-          - { name: culture, label: "Culture lines (hidden while empty)", type: string, list: true }
-          - name: locations
-            label: Other offices (hidden while empty)
-            type: object
-            list: true
-            fields:
-              - { name: city, label: City, type: string }
-              - { name: addressLines, label: Address lines, type: string, list: true }
-      - name: location
-        label: Location section
-        type: object
-        fields:
-          - { name: label, label: Small label, type: string }
-          - { name: mapsLabel, label: Map link text, type: string }
       - name: cta
         label: Contact section
         type: object
@@ -313,12 +242,16 @@ content:
           - { name: text, label: Text under the headline, type: text }
           - { name: buttonLabel, label: Button text (when contact details exist), type: string }
           - { name: visitLabel, label: Button text (map only), type: string }
-          - { name: figure, label: Character image + red trace, type: object, fields: *figure_fields }
+          - { name: figure, label: "Character image (open hand, inviting)", type: object, fields: *figure_fields }
+      - name: location
+        label: Location labels
+        type: object
+        fields:
+          - { name: label, label: Small label, type: string }
+          - { name: mapsLabel, label: Map link text, type: string }
       - name: footer
         label: Footer
         type: object
         fields:
           - { name: backToTop, label: Back to top text, type: string }
           - { name: rights, label: Rights line, type: string }
-          - { name: keywords, label: Side keywords, type: string, list: true }
-          - { name: figure, label: Footer image + red trace, type: object, fields: *figure_fields }

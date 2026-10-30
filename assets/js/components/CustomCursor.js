@@ -1,43 +1,40 @@
 import { hasFinePointer, prefersReducedMotion, lerp } from '../lib/dom.js';
 
-// Desktop only: a dot that grows into a label over projects (VIEW) and films (PLAY),
-// and expands slightly over links. Touch devices never get it.
+// Desktop only, and only over the work: a small label (PLAY / VIEW) follows the
+// pointer. Everywhere else the normal cursor is left alone.
 export function initCustomCursor() {
   if (!hasFinePointer()) return;
 
   const el = document.createElement('div');
   el.className = 'cursor';
   el.setAttribute('aria-hidden', 'true');
-  el.innerHTML = '<span class="cursor__dot"></span><span class="cursor__label"></span>';
+  el.innerHTML = '<span class="cursor__label"></span>';
   document.body.appendChild(el);
-  const label = el.querySelector('.cursor__label');
-  document.documentElement.classList.add('has-cursor');
+  const label = el.firstChild;
 
-  let x = -100, y = -100, cx = -100, cy = -100;
-  const ease = prefersReducedMotion() ? 1 : 0.22;
-
-  window.addEventListener('pointermove', (e) => {
-    if (e.pointerType !== 'mouse') return;
-    x = e.clientX; y = e.clientY;
-    el.classList.add('is-visible');
-  }, { passive: true });
-  document.addEventListener('pointerleave', () => el.classList.remove('is-visible'));
-
-  document.addEventListener('pointerover', (e) => {
-    const target = e.target.closest('[data-cursor], a, button, input, label');
-    const mode = target && target.dataset.cursor;
-    el.classList.toggle('is-label', Boolean(mode));
-    el.classList.toggle('is-link', Boolean(target) && !mode);
-    label.textContent = mode ? mode.toUpperCase() : '';
-  });
-  document.addEventListener('pointerdown', () => el.classList.add('is-down'));
-  document.addEventListener('pointerup', () => el.classList.remove('is-down'));
+  let x = -100, y = -100, cx = -100, cy = -100, running = false;
+  const ease = prefersReducedMotion() ? 1 : 0.2;
 
   const tick = () => {
     cx = lerp(cx, x, ease);
     cy = lerp(cy, y, ease);
-    el.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
-    requestAnimationFrame(tick);
+    el.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0)`;
+    if (running) requestAnimationFrame(tick);
   };
-  requestAnimationFrame(tick);
+
+  window.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse') return;
+    x = e.clientX; y = e.clientY;
+  }, { passive: true });
+
+  document.addEventListener('pointerover', (e) => {
+    const target = e.target.closest('[data-cursor]');
+    const on = Boolean(target) && !document.documentElement.classList.contains('modal-open');
+    if (on) {
+      label.textContent = target.dataset.cursor;
+      if (!running) { running = true; cx = x; cy = y; requestAnimationFrame(tick); }
+    }
+    el.classList.toggle('is-on', on);
+    if (!on) running = false;
+  });
 }

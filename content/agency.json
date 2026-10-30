@@ -24,16 +24,16 @@
                 },
     "nav":  [
                 {
-                    "href":  "#capabilities",
-                    "label":  "Crafts"
-                },
-                {
                     "href":  "#work",
-                    "label":  "Films"
+                    "label":  "Work"
                 },
                 {
-                    "href":  "#designs",
-                    "label":  "Designs"
+                    "href":  "#services",
+                    "label":  "Services"
+                },
+                {
+                    "href":  "#studio",
+                    "label":  "Studio"
                 },
                 {
                     "href":  "#contact",

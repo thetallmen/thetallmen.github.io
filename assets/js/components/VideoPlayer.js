@@ -1,71 +1,4 @@
-import { $, $$, esc, formatTime, isDesktop, prefersReducedMotion, saveData, whenNear } from '../lib/dom.js';
-import { parseRatio } from './ProjectItem.js';
-
-/* ---------- Featured film section ---------- */
-
-export function FeaturedFilm({ copy, film }) {
-  const v = film.videos[0];
-  const [w, h] = parseRatio(v.ratio);
-  const title = film.name || copy.film.title.join(' ');
-  return `
-  <section class="film s-ink" id="film" aria-labelledby="film-title">
-    <div class="wrap film__grid">
-      <div class="film__text">
-        <p class="meta">${esc(copy.film.label)}</p>
-        <h2 class="film__title" id="film-title">${copy.film.title.map((l) => `<span class="film__title-line" data-reveal="words">${esc(l)}</span>`).join('')}</h2>
-        <p class="film__copy" data-reveal="fade">${esc(copy.film.text)}</p>
-        <p class="meta film__specs">
-          <span>Film</span>${v.duration ? `<span>${formatTime(v.duration)}</span>` : ''}<span>${esc(v.ratio)}</span>${v.hasAudio ? '<span>Sound</span>' : ''}
-        </p>
-      </div>
-
-      <div class="film__stage">
-        <button class="film__frame" type="button" style="--ratio:${w} / ${h}"
-          data-open-video="${esc(v.src)}" data-video-title="${esc(title)}" data-video-ratio="${w}/${h}"
-          data-video-poster="${esc(v.poster)}" ${v.hasAudio ? 'data-video-sound="true"' : ''} data-cursor="play"
-          aria-label="${esc(copy.film.playLabel)}: ${esc(title)}${v.duration ? `, ${formatTime(v.duration)}` : ''}">
-          ${v.poster ? `<img class="film__poster" src="${esc(v.poster)}" alt="${esc(v.alt)}" loading="lazy" decoding="async">` : ''}
-          <video class="film__preview" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-film-preview="${esc(v.src)}"></video>
-          <span class="film__play" data-magnetic aria-hidden="true"><span>${esc(copy.film.playLabel)}</span></span>
-        </button>
-      </div>
-    </div>
-  </section>`;
-}
-
-/* ---------- Lazy, in-view playback for portfolio loops ---------- */
-
-export function initLazyVideos() {
-  const autoplayAllowed = !prefersReducedMotion() && !saveData();
-
-  // Portfolio loops: source attached only when near the viewport, played only while visible.
-  $$('[data-lazy-video]').forEach((video) => {
-    whenNear(video, () => {
-      video.src = video.dataset.lazyVideo;
-      if (autoplayAllowed) watchVisibility(video);
-    }, '300px 0px');
-  });
-
-  // Featured film preview: desktop only. Phones keep the poster and wait for a tap.
-  const preview = $('[data-film-preview]');
-  if (preview && autoplayAllowed && isDesktop()) {
-    whenNear(preview, () => {
-      preview.src = preview.dataset.filmPreview;
-      preview.addEventListener('playing', () => preview.classList.add('is-playing'), { once: true });
-      watchVisibility(preview);
-    }, '200px 0px');
-  }
-}
-
-function watchVisibility(video) {
-  if (!('IntersectionObserver' in window)) { video.play().catch(() => {}); return; }
-  const io = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting && !document.documentElement.classList.contains('modal-open')) video.play().catch(() => {});
-    else video.pause();
-  }, { threshold: 0.15 });
-  io.observe(video);
-  video._io = io;
-}
+import { $, $$, formatTime, prefersReducedMotion } from '../lib/dom.js';
 
 /* ---------- Fullscreen modal player ---------- */
 
@@ -137,10 +70,9 @@ export function initVideoModal() {
       modal.hidden = true;
       video.removeAttribute('src');
       video.load();
-      // Resume visible loops.
-      $$('[data-lazy-video], [data-film-preview]').forEach((v) => {
-        if (v.src && v._io) { v._io.unobserve(v); v._io.observe(v); }
-      });
+      // Let the page resume its own loops.
+      window.dispatchEvent(new Event('ttm:modal-closed'));
+
     };
     window.setTimeout(done, prefersReducedMotion() ? 0 : 450);
     if (opener) opener.focus({ preventScroll: true });

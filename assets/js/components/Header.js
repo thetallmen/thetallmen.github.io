@@ -8,9 +8,10 @@ export function Header({ agency, nav }) {
     <a class="site-header__brand" href="#top" aria-label="${esc(agency.name)}, back to top">${Wordmark(agency)}</a>
     <nav class="site-nav" aria-label="Primary">
       <ul class="site-nav__list">
-        ${nav.map((item) => `<li><a class="site-nav__link" href="${esc(item.href)}"><span>${esc(item.label)}</span></a></li>`).join('')}
+        ${nav.filter((item) => item.href !== '#contact').map((item) => `<li><a class="site-nav__link" href="${esc(item.href)}" data-nav-link><span>${esc(item.label)}</span></a></li>`).join('')}
       </ul>
     </nav>
+    <a class="btn btn--sm site-header__cta" href="#contact" data-magnetic><span class="btn__label">Let's talk</span><span class="btn__arrow" aria-hidden="true">→</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
       <span class="menu-toggle__label" data-menu-label>Menu</span>
       <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span></span>

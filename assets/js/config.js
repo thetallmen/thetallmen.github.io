@@ -7,7 +7,7 @@
    content/agency.json    EDIT AGENCY INFO, LOCATION, CONTACT DETAILS HERE
    content/copy.json      EDIT SITE COPY HERE
    content/services.json  EDIT CAPABILITIES + PROCESS HERE
-   content/work.json      ADD PORTFOLIO PROJECTS + FEATURED FILM HERE
+   content/work.json      ADD PORTFOLIO PROJECTS HERE
    ========================================================================= */
 
 const FILES = ['agency', 'copy', 'services', 'work'];
@@ -66,49 +66,43 @@ function normalizeFigure(fig) {
 export async function loadContent() {
   const [agency, copy, services, work] = await Promise.all(FILES.map(getJSON));
 
-  copy.capabilities = services.capabilities || { title: 'Capabilities', items: [] };
+  // Every block is optional: a missing block or field renders as empty, never breaks.
+  const block = (b) => ({ label: '', text: '', ...(b || {}), title: arr(b && b.title) });
+
+  copy.capabilities = services.capabilities || { title: 'Services', items: [] };
   copy.capabilities.items = arr(copy.capabilities.items).map((item) => ({
     name: str(item.name),
     pose: str(item.pose),
+    sector: str(item.sector),
     tagline: str(item.tagline),
     text: str(item.text),
     bullets: arr(item.bullets),
-    keywords: arr(item.keywords),
     figure: normalizeFigure(item.figure),
   }));
-  copy.capabilitiesIntro = copy.capabilitiesIntro || { label: '', title: [] };
-  copy.capabilitiesIntro.title = arr(copy.capabilitiesIntro.title);
-  copy.capabilitiesIntro.figure = normalizeFigure(copy.capabilitiesIntro.figure);
-  copy.hero.keywords = arr(copy.hero.keywords);
-  copy.hero.figure = normalizeFigure(copy.hero.figure);
-  copy.intro.title = arr(copy.intro.title);
-  copy.intro.keywords = arr(copy.intro.keywords);
-  copy.intro.figure = normalizeFigure(copy.intro.figure);
-  copy.cta.figure = normalizeFigure(copy.cta.figure);
-  copy.footer.keywords = arr(copy.footer.keywords);
-  copy.footer.figure = normalizeFigure(copy.footer.figure);
-  // Scenes added for the one-page film. Missing blocks render as empty, never break.
-  const block = (b, extra = {}) => ({ label: '', text: '', ...extra, ...(b || {}), title: arr(b && b.title) });
-  copy.sectors = block(copy.sectors); copy.sectors.items = arr(copy.sectors.items);
-  copy.reel = block(copy.reel);
-  copy.designs = block(copy.designs);
-  copy.markets = block(copy.markets); copy.markets.items = arr(copy.markets.items).filter((m) => m && m.name);
-  copy.clients = copy.clients || { title: [], items: [] };
-  copy.clients.title = arr(copy.clients.title);
-  copy.clients.items = arr(copy.clients.items)
-    .filter((c) => c && (c.name || c.logo))
-    .map((c) => ({ name: str(c.name), logo: asset(c.logo), url: str(c.url) }));
-  copy.process = services.process || { title: 'Process', steps: [] };
+  copy.process = services.process || { title: 'How we work', steps: [] };
   copy.process.steps = arr(copy.process.steps);
-  copy.marquee = arr(copy.marquee);
-  copy.about.team = arr(copy.about.team);
-  copy.about.culture = arr(copy.about.culture);
-  copy.about.locations = arr(copy.about.locations);
+
+  copy.hero = { lede: '', primaryLabel: 'Start a project', secondaryLabel: 'See the work', ...(copy.hero || {}) };
+  copy.hero.lines = arr(copy.hero.lines);
+  copy.hero.figure = normalizeFigure(copy.hero.figure);
+  copy.clients = { label: '', note: '', ...(copy.clients || {}) };
+  copy.work = block(copy.work);
+  copy.archive = block(copy.archive);
+  copy.services = { workLabel: 'See related work', ...block(copy.services) };
+  copy.studio = { story: '', ...(copy.studio || {}) };
+  copy.studio.statement = arr(copy.studio.statement);
+  copy.studio.points = arr(copy.studio.points).filter((p) => p && p.term);
+  copy.studio.figure = normalizeFigure(copy.studio.figure);
+  copy.cta = { label: '', text: '', buttonLabel: 'Start a project', visitLabel: 'Visit the studio', ...(copy.cta || {}) };
+  copy.cta.lines = arr(copy.cta.lines);
+  copy.cta.figure = normalizeFigure(copy.cta.figure);
+  copy.location = { label: 'Studio', mapsLabel: 'Open in Google Maps', ...(copy.location || {}) };
+  copy.footer = { backToTop: 'Back to top', rights: 'All rights reserved.', ...(copy.footer || {}) };
 
   const projects = arr(work.projects).map(normalizeProject).filter((p) => p.videos.length || p.images.length);
-  // Homepage shows the featured projects; if none are marked, the first four.
-  const featured = projects.some((p) => p.featured) ? projects.filter((p) => p.featured) : projects.slice(0, 4);
-  const film = work.featuredFilm ? normalizeProject(work.featuredFilm) : null;
+  // Selected work shows the featured projects (or the first six); the archive shows the rest.
+  const featured = projects.some((p) => p.featured) ? projects.filter((p) => p.featured) : projects.slice(0, 6);
+  const rest = projects.filter((p) => !featured.includes(p));
 
   return {
     locale: agency.locale || { lang: 'en', dir: 'ltr' },
@@ -128,6 +122,6 @@ export async function loadContent() {
     copy,
     projects,
     featured,
-    featuredFilm: film && film.videos.length ? film : null,
+    rest,
   };
 }

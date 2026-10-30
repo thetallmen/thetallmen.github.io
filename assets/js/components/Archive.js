@@ -1,55 +1,50 @@
 import { $, $$, esc, pad2 } from '../lib/dom.js';
-import { SectionTitle } from './SectionTitle.js';
-import { projectTitle, parseRatio } from './ProjectItem.js';
+import { projectTitle } from './ProjectItem.js';
+import { Title, WorkMedia } from './Sections.js';
 
 /* =========================================================================
-   ALL WORK — every project in content/work.json as a filterable grid.
-   Filters: discipline (Film / Design) and sector (from each project's
-   "industry"). A card opens the lightbox with all of that project's media.
+   ARCHIVE — the rest of the work as a filterable masonry grid, every piece
+   at its real proportions. Filters: Film / Design and sector (each project's
+   "industry"). Films open the player, designs open the lightbox.
    ========================================================================= */
 
 const discipline = (p) => (p.videos.length ? 'Film' : 'Design');
 const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 function Card(p, i) {
-  const v = p.videos[0];
-  const img = p.images[0];
-  const cover = v ? v.poster : img.src;
-  const [w, h] = parseRatio(v ? v.ratio : img.ratio);
-  const count = p.videos.length + p.images.length;
-  const title = projectTitle(p, i);
   return `
-  <li class="card" data-type="${discipline(p)}" data-sector="${esc(slug(p.industry))}">
-    <button class="card__media" type="button" style="--ratio:${w} / ${h}" data-open-gallery="${esc(p.id)}"
-      data-cursor="${v ? 'play' : 'view'}" aria-label="${v ? 'Play' : 'View'} ${esc(title)}${count > 1 ? `, ${count} pieces` : ''}">
-      ${cover ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async">` : ''}
-      ${v ? `<video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-hover-video="${esc(v.preview)}"></video>` : ''}
-      ${count > 1 ? `<span class="card__count meta" aria-hidden="true">${count}</span>` : ''}
-    </button>
+  <li class="card" data-type="${discipline(p)}" data-sector="${esc(slug(p.industry))}" data-rv="clip">
+    ${WorkMedia(p, i)}
     <div class="card__meta">
-      <h3 class="card__title">${esc(title)}</h3>
-      <p class="meta card__tags"><span>${discipline(p)}</span>${p.industry ? `<span>${esc(p.industry)}</span>` : ''}</p>
+      <h3 class="card__title">${esc(p.client || projectTitle(p, i))}</h3>
+      <p class="meta card__tags">${discipline(p)}${p.industry ? ` · ${esc(p.industry)}` : ''}</p>
     </div>
   </li>`;
 }
 
-export function Archive({ projects }) {
+export function Archive({ copy, projects, all }) {
+  if (!projects.length) return '';
   const sectors = [...new Set(projects.map((p) => p.industry).filter(Boolean))];
   const chip = (group, value, label, on = false) =>
     `<button class="chip" type="button" data-filter="${group}" data-value="${esc(value)}" aria-pressed="${on}">${esc(label)}</button>`;
   return `
   <section class="archive" id="archive" aria-labelledby="archive-title" data-archive>
-    ${SectionTitle({ id: 'archive-title', title: 'All *work*', count: projects.length })}
-    <div class="wrap archive__filters" role="group" aria-label="Filter projects">
-      <div class="archive__group">
-        ${chip('type', 'all', 'All', true)}${chip('type', 'Film', 'Film')}${chip('type', 'Design', 'Design')}
+    <header class="wrap sec-head sec-head--row">
+      <div>
+        ${copy.archive.label ? `<p class="meta label" data-rv="fade"><span class="label__n">${pad2(projects.length)}</span>${esc(copy.archive.label)}</p>` : ''}
+        ${Title(copy.archive.title, { id: 'archive-title' })}
       </div>
-      <div class="archive__group">
-        ${chip('sector', 'all', 'Every sector', true)}${sectors.map((s) => chip('sector', slug(s), s)).join('')}
+      <div class="archive__filters" role="group" aria-label="Filter projects" data-rv="fade">
+        <div class="archive__group">
+          ${chip('type', 'all', 'All', true)}${chip('type', 'Film', 'Film')}${chip('type', 'Design', 'Design')}
+        </div>
+        <div class="archive__group">
+          ${chip('sector', 'all', 'Every sector', true)}${sectors.map((s) => chip('sector', slug(s), s)).join('')}
+        </div>
       </div>
-    </div>
+    </header>
     <p class="wrap meta archive__status" aria-live="polite" data-archive-status></p>
-    <ul class="wrap archive__grid">${projects.map(Card).join('')}</ul>
+    <ul class="wrap archive__grid">${projects.map((p) => Card(p, all.indexOf(p))).join('')}</ul>
   </section>`;
 }
 
@@ -70,26 +65,23 @@ export function initArchive() {
     status.textContent = shown ? `${pad2(shown)} projects` : 'Nothing here yet. Try another filter.';
   };
 
+  const select = (group, value) => {
+    state[group] = value;
+    $$(`[data-filter="${group}"]`, root).forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.value === value)));
+    apply();
+  };
   root.addEventListener('click', (e) => {
     const b = e.target.closest('[data-filter]');
-    if (!b) return;
-    state[b.dataset.filter] = b.dataset.value;
-    $$(`[data-filter="${b.dataset.filter}"]`, root).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    apply();
+    if (b) select(b.dataset.filter, b.dataset.value);
+  });
+  // "See related work" links elsewhere on the page pre-select a sector.
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('[data-filter-link]');
+    if (!a) return;
+    const value = slug(a.dataset.filterLink);
+    if ($(`[data-filter="sector"][data-value="${value}"]`, root)) { select('type', 'all'); select('sector', value); }
   });
   apply();
-
-  // Desktop hover: play the short silent loop over the cover.
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    $$('[data-hover-video]', root).forEach((video) => {
-      const btn = video.closest('.card__media');
-      btn.addEventListener('pointerenter', () => {
-        if (!video.src) video.src = video.dataset.hoverVideo;
-        video.play().then(() => btn.classList.add('is-playing')).catch(() => {});
-      });
-      btn.addEventListener('pointerleave', () => { video.pause(); btn.classList.remove('is-playing'); });
-    });
-  }
 }
 
 /* =========================================================================
@@ -154,7 +146,7 @@ export function initLightbox(projects) {
     box.classList.remove('is-open');
     document.documentElement.classList.remove('modal-open');
     stage.innerHTML = '';
-    window.setTimeout(() => { box.hidden = true; }, 400);
+    window.setTimeout(() => { box.hidden = true; window.dispatchEvent(new Event('ttm:modal-closed')); }, 400);
     opener?.focus({ preventScroll: true });
   };
   const step = (d) => { at = (at + d + items.length) % items.length; render(); };
