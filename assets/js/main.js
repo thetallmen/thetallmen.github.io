@@ -3,40 +3,46 @@
 import { loadContent } from './config.js';
 import { $ } from './lib/dom.js';
 import { Header, MobileMenu, initHeader } from './components/Header.js';
-import { Hero, Clients, Services, Studio, Contact } from './components/Sections.js';
+import { Clients } from './components/Sections.js';
+import { Hero, About, Capabilities, Services, Contact, initJourney, playHero } from './components/Journey.js';
+import { IntroMarkup, runIntro } from './components/Intro.js';
+import { initSound } from './components/Sound.js';
 import { Selected, initCarousel } from './components/Carousel.js';
-import { Archive, Lightbox, initArchive, initLightbox } from './components/Archive.js';
+import { Lightbox, initLightbox } from './components/Archive.js';
 import { VideoModal, initVideoModal } from './components/VideoPlayer.js';
 import { Footer } from './components/Footer.js';
 import { initCustomCursor } from './components/CustomCursor.js';
 import { initTraces } from './components/Trace.js';
-import { initMotion, playIntro, initMagnetic, initAnchors } from './motion.js';
+import { initMotion, initMagnetic, initAnchors } from './motion.js';
 
 async function start() {
-  const { agency, nav, copy, contact, location, projects, featured, rest, locale } = await loadContent();
+  const { agency, nav, copy, contact, location, projects, featured, locale } = await loadContent();
 
   document.documentElement.lang = locale.lang;
   document.documentElement.dir = locale.dir;
 
   $('[data-slot="header"]').innerHTML = Header({ agency, nav }) + MobileMenu({ nav, location, contact });
 
-  // The running order: promise, proof, work, services, more work, studio, contact.
+  // The journey: hero → about → capabilities → one chapter per service → work → clients → contact.
+  // The stacked chapters live in one wrapper, so they stop sticking where the work begins.
   $('[data-slot="main"]').innerHTML = [
-    Hero({ agency, copy, featured }),
-    Clients({ copy, featured, projects }),
-    Selected({ copy, featured, projects }),
+    '<div class="journey">',
+    Hero({ agency, copy, items: copy.capabilities.items }),
+    About({ copy }),
+    Capabilities({ copy }),
     Services({ copy }),
-    Archive({ copy, projects: rest, all: projects }),
-    Studio({ copy }),
+    '</div>',
+    Selected({ copy, featured, projects }),
+    Clients({ copy, featured, projects }),
     Contact({ copy, contact, location }),
   ].join('');
 
   $('[data-slot="footer"]').innerHTML = Footer({ agency, nav, contact, copy });
-  $('[data-slot="modal"]').innerHTML = VideoModal() + Lightbox();
+  $('[data-slot="modal"]').innerHTML = VideoModal() + Lightbox() + IntroMarkup(agency);
 
   initHeader();
+  initSound();
   initCarousel();
-  initArchive();
   initVideoModal();
   initLightbox(projects);
   initTraces();
@@ -44,10 +50,15 @@ async function start() {
   initAnchors();
   initCustomCursor();
   initMotion();
+  initJourney();
 
   document.documentElement.classList.add('is-ready');
   if (window.location.hash) document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
-  playIntro();
+  await runIntro();
+  // The hero's headline rises with the figure (motion.js reveals [data-rv] in the hero).
+  document.querySelectorAll('[data-hero] [data-rv]').forEach((el) => el.classList.add('is-in'));
+  setTimeout(() => document.querySelectorAll('[data-hero] [data-rv]').forEach((el) => el.classList.add('is-settled')), 1100);
+  playHero();
 }
 
 start().catch((err) => {

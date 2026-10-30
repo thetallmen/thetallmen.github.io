@@ -12,7 +12,7 @@ import { $$ } from '../lib/dom.js';
 const SVG = 'http://www.w3.org/2000/svg';
 
 // Catmull-Rom through the points, as cubic Béziers: a hand-drawn, even curve.
-function smooth(pts) {
+export function smooth(pts) {
   let d = `M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
   for (let i = 0; i < pts.length - 1; i += 1) {
     const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;

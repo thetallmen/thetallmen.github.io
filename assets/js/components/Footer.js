@@ -7,6 +7,7 @@ export function Footer({ agency, nav, contact, copy }) {
   const year = new Date().getFullYear();
   return `
   <footer class="site-footer" aria-label="Footer">
+    ${copy.footer.figure ? `<img class="footer__figure" src="${esc(copy.footer.figure.src)}" alt="" loading="lazy" decoding="async" aria-hidden="true">` : ''}
     <div class="wrap footer__grid">
       <div class="footer__brand">
         ${Wordmark(agency)}

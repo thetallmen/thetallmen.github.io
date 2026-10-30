@@ -1,35 +1,39 @@
 {
   "hero": {
-    "lines": ["We make brands", "*impossible*", "to ignore."],
-    "lede": "The Tall Men is a creative marketing agency in Cairo. Strategy, content, media and production under one roof, built to turn attention into growth.",
+    "lines": ["The", "Tall", "Men"],
+    "lede": "Creative marketing for brands that want to be seen. Strategy, content, media and production under one roof, in Cairo.",
     "primaryLabel": "Start a project",
     "secondaryLabel": "See the work",
-    "figure": null
+    "figure": { "src": "assets/characters/01_Hero_Camera.webp", "alt": "A tall faceless man in a black coat holding a camera toward the viewer" },
+    "background": ""
   },
   "clients": {
-    "label": "Selected clients",
+    "label": "Brands we build with",
     "note": "Automotive, food & beverage, fitness, beauty, corporate and real estate."
   },
   "work": {
     "label": "Selected work",
     "title": ["Work that", "*moves* people."],
-    "text": "Launch films, campaigns, content and key visuals. Tap any piece to watch or view it in full."
+    "text": "Launch films, campaigns, content and key visuals. Drag, swipe or use the arrows. Tap any piece to watch or view it in full."
   },
   "archive": {
     "label": "Archive",
     "title": ["More", "*work.*"]
   },
   "services": {
-    "label": "Services",
-    "title": ["Everything a brand", "needs to *grow.*"],
+    "label": "Capabilities",
+    "title": ["Ideas.", "Skills.", "*Execution.*"],
     "text": "Six disciplines, one team. Hire us for one of them, or for the whole campaign.",
-    "workLabel": "See related work"
+    "workLabel": "See related work",
+    "figure": { "src": "assets/characters/03_Capabilities_Keyboard.webp", "alt": "A tall faceless man reaching toward a keyboard" },
+    "background": ""
   },
   "studio": {
-    "label": "Studio",
-    "statement": ["Tall is not a size.", "It's a *point of view.*"],
-    "story": "The Tall Men is a creative marketing agency based in Cairo. We work with automotive, food & beverage, fitness, beauty, corporate and real-estate brands, from the first insight to the final cut and the media plan that puts it in front of people.",
-    "figure": null,
+    "label": "About",
+    "statement": ["A higher", "perspective", "on *brands.*"],
+    "story": "The Tall Men is a creative marketing agency based in Cairo. We study the market from a higher point of view, understand what the audience cares about, and turn it into strategy, content, media and production that people notice.",
+    "figure": { "src": "assets/characters/02_About_Laptop.webp", "alt": "A tall faceless man holding a laptop under his arm" },
+    "background": "",
     "points": [
       { "term": "Insight first", "text": "We start with the audience and the market, not with the format. The idea comes from what people actually care about." },
       { "term": "Craft that holds attention", "text": "Film, design and content made with taste, so the work earns the next second of someone's time." },
@@ -38,11 +42,12 @@
   },
   "cta": {
     "label": "Contact",
-    "lines": ["Let's make it", "*bigger.*"],
+    "lines": ["Let's make", "people *look.*"],
     "text": "Tell us about your brand and what you want it to do next.",
-    "buttonLabel": "Start a project",
+    "buttonLabel": "Get in touch",
     "visitLabel": "Visit the studio",
-    "figure": null
+    "figure": { "src": "assets/characters/09_Contact_Open_Hand.webp", "alt": "A tall faceless man reaching out an open hand" },
+    "background": ""
   },
   "location": {
     "label": "Studio",
@@ -50,6 +55,7 @@
   },
   "footer": {
     "backToTop": "Back to top",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "figure": { "src": "assets/characters/10_Footer_Lower_Body.webp", "alt": "" }
   }
 }

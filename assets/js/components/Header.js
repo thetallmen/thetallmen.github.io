@@ -1,6 +1,7 @@
 import { $, $$, esc } from '../lib/dom.js';
 import { Wordmark } from './Wordmark.js';
 import { socialLinks } from './contactLinks.js';
+import { SoundToggle } from './Sound.js';
 
 export function Header({ agency, nav }) {
   return `
@@ -11,6 +12,7 @@ export function Header({ agency, nav }) {
         ${nav.filter((item) => item.href !== '#contact').map((item) => `<li><a class="site-nav__link" href="${esc(item.href)}" data-nav-link><span>${esc(item.label)}</span></a></li>`).join('')}
       </ul>
     </nav>
+    ${SoundToggle()}
     <a class="btn btn--sm site-header__cta" href="#contact" data-magnetic><span class="btn__label">Let's talk</span><span class="btn__arrow" aria-hidden="true">→</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
       <span class="menu-toggle__label" data-menu-label>Menu</span>

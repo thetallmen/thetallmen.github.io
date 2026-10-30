@@ -241,6 +241,63 @@
                          "caseStudyUrl":  ""
                      },
                      {
+                         "id":  "pure-scent",
+                         "name":  "Pure Scent — Eau de parfum",
+                         "client":  "Pure Scent",
+                         "industry":  "Beauty \u0026 Grooming",
+                         "services":  [
+                                          "Product film",
+                                          "Motion"
+                                      ],
+                         "year":  "",
+                         "featured":  true,
+                         "description":  "A product film for the 30 ml eau de parfum: glass, marble and warm light.",
+                         "type":  "motion",
+                         "images":  [
+
+                                    ],
+                         "videos":  [
+                                        {
+                                            "src":  "assets/work/v/pure-scent.mp4",
+                                            "preview":  "assets/work/v/pure-scent.mp4",
+                                            "poster":  "assets/work/v/pure-scent.jpg",
+                                            "ratio":  "9:16",
+                                            "duration":  4,
+                                            "hasAudio":  false,
+                                            "alt":  "A Pure Scent perfume bottle on marble in warm light"
+                                        }
+                                    ],
+                         "caseStudyUrl":  ""
+                     },
+                     {
+                         "id":  "nia-talk",
+                         "name":  "nia Agency — Talking head",
+                         "client":  "nia Agency",
+                         "industry":  "Corporate",
+                         "services":  [
+                                          "Video editing"
+                                      ],
+                         "year":  "",
+                         "featured":  true,
+                         "description":  "A direct-to-camera film for the agency, shot in its own studio.",
+                         "type":  "vertical",
+                         "images":  [
+
+                                    ],
+                         "videos":  [
+                                        {
+                                            "src":  "assets/work/v/nia-talk.mp4",
+                                            "preview":  "assets/work/v/nia-talk-loop.mp4",
+                                            "poster":  "assets/work/v/nia-talk.jpg",
+                                            "ratio":  "9:16",
+                                            "duration":  32,
+                                            "hasAudio":  true,
+                                            "alt":  "A man in a white t-shirt seated in an armchair, speaking to camera"
+                                        }
+                                    ],
+                         "caseStudyUrl":  ""
+                     },
+                     {
                          "id":  "shogun",
                          "name":  "Shogun",
                          "client":  "Shogun",

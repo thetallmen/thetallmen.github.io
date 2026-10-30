@@ -3,40 +3,39 @@
     "title": "Services",
     "items": [
       {
-        "name": "Strategy", "tagline": "Know where to aim.", "pose": "binoculars", "sector": "",
+        "name": "Strategy", "tagline": "See further.", "pose": "binoculars", "sector": "",
         "text": "Clear strategies that turn opportunities into growth. We read your market, your audience and your next move.",
         "bullets": ["Market Research", "Brand Positioning", "Communication Strategy", "Campaign Planning"],
-        "figure": null
+        "figure": { "src": "assets/characters/04_Strategy_Binoculars.webp", "alt": "A tall faceless man looking through binoculars" },
+        "background": ""
       },
       {
         "name": "Creative", "tagline": "Ideas that move.", "pose": "stylus", "sector": "",
         "text": "Concepts and key visuals made to be noticed and remembered, from occasion posts to full campaigns.",
         "bullets": ["Brand Identity", "Campaign Concepts", "Key Visuals", "Art Direction"],
-        "figure": null
+        "figure": { "src": "assets/characters/05_Creative_Stylus_Tablet.webp", "alt": "A tall faceless man drawing on a tablet with a stylus" },
+        "background": ""
       },
       {
         "name": "Content", "tagline": "Stories that travel.", "pose": "phone", "sector": "",
         "text": "Reels, social design and copy that fit the brand and speak the audience's language.",
         "bullets": ["Social Media Content", "Reels & Motion", "Influencer & UGC", "Copywriting"],
-        "figure": null
+        "figure": { "src": "assets/characters/06_Content_Smartphone.webp", "alt": "A tall faceless man holding out a smartphone" },
+        "background": ""
       },
       {
-        "name": "Media Buying", "tagline": "The right people, at the right moment.", "pose": "mouse", "sector": "",
+        "name": "Media", "tagline": "Reach higher.", "pose": "mouse", "sector": "",
         "text": "Paid campaigns planned, bought and optimised to put the work in front of the people who matter.",
-        "bullets": ["Paid Social", "Google Ads", "Media Planning", "Performance Optimization"],
-        "figure": null
+        "bullets": ["Target", "Analyze", "Optimize", "Scale"],
+        "figure": { "src": "assets/characters/07_Media_Mouse.webp", "alt": "A tall faceless man with his hand on a computer mouse" },
+        "background": ""
       },
       {
-        "name": "Production", "tagline": "From concept to final cut.", "pose": "clapper", "sector": "",
-        "text": "Commercials, event films, gym campaigns and product shoots, produced end to end.",
-        "bullets": ["Commercials", "Event Coverage", "Photography", "Editing & Motion Graphics"],
-        "figure": null
-      },
-      {
-        "name": "AI Production", "tagline": "Scenes a camera can't reach.", "pose": "keyboard", "sector": "AI Films",
-        "text": "AI films and visuals directed with the same taste as a real shoot, alone or blended with live action.",
-        "bullets": ["AI Films", "AI Key Visuals", "Concept Visualisation", "Hybrid Shoot + AI"],
-        "figure": null
+        "name": "Production", "tagline": "Bring ideas to life.", "pose": "clapper", "sector": "",
+        "text": "Commercials, event films, gym campaigns and product shoots, produced end to end, plus AI films directed with the same taste as a real shoot.",
+        "bullets": ["Commercials", "Event Coverage", "Photography", "Editing & Motion", "AI Films"],
+        "figure": { "src": "assets/characters/08_Production_Camera_Clapperboard.webp", "alt": "A tall faceless man holding a clapperboard beside a cinema camera and a studio light" },
+        "background": ""
       }
     ]
   },

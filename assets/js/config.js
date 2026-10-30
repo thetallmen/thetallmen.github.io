@@ -98,11 +98,16 @@ export async function loadContent() {
   copy.cta.figure = normalizeFigure(copy.cta.figure);
   copy.location = { label: 'Studio', mapsLabel: 'Open in Google Maps', ...(copy.location || {}) };
   copy.footer = { backToTop: 'Back to top', rights: 'All rights reserved.', ...(copy.footer || {}) };
+  copy.services.figure = normalizeFigure(copy.services.figure);
+  copy.footer.figure = normalizeFigure(copy.footer.figure);
+  // Optional full-bleed background photo per chapter (empty = the beige paper).
+  [copy.hero, copy.services, copy.studio, copy.cta, ...copy.capabilities.items].forEach((b) => { b.background = asset(b.background); });
+  copy.capabilities.items.forEach((item, i) => { item.background = asset(services.capabilities.items[i].background); });
 
   const projects = arr(work.projects).map(normalizeProject).filter((p) => p.videos.length || p.images.length);
-  // Selected work shows the featured projects (or the first six); the archive shows the rest.
-  const featured = projects.some((p) => p.featured) ? projects.filter((p) => p.featured) : projects.slice(0, 6);
-  const rest = projects.filter((p) => !featured.includes(p));
+  // Every project sits in the work carousel. Featured ones come first.
+  const featured = [...projects.filter((p) => p.featured), ...projects.filter((p) => !p.featured)];
+  const rest = [];
 
   return {
     locale: agency.locale || { lang: 'en', dir: 'ltr' },

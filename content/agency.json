@@ -28,12 +28,12 @@
                     "label":  "Work"
                 },
                 {
-                    "href":  "#services",
-                    "label":  "Services"
+                    "href":  "#capabilities",
+                    "label":  "Capabilities"
                 },
                 {
-                    "href":  "#studio",
-                    "label":  "Studio"
+                    "href":  "#about",
+                    "label":  "About"
                 },
                 {
                     "href":  "#contact",

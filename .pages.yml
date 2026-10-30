@@ -162,6 +162,7 @@ content:
                 fields: &figure_fields
                   - { name: src, label: "Image (character holding this service's object)", type: image }
                   - { name: alt, label: Image description, type: string }
+              - { name: background, label: "Background photo for this chapter (optional, empty = beige paper)", type: image }
       - name: process
         label: Process
         type: object
@@ -190,7 +191,8 @@ content:
           - { name: lede, label: Text under the headline, type: text }
           - { name: primaryLabel, label: Main button text, type: string }
           - { name: secondaryLabel, label: Second button text, type: string }
-          - { name: figure, label: "Character image (with a camera), stands next to the film frame", type: object, fields: *figure_fields }
+          - { name: figure, label: "Character image (with a camera)", type: object, fields: *figure_fields }
+          - { name: background, label: "Background photo (optional)", type: image }
       - name: clients
         label: Clients strip (names come from the portfolio)
         type: object
@@ -212,6 +214,8 @@ content:
           - { name: title, label: Headline lines, type: string, list: true }
           - { name: text, label: Text, type: text }
           - { name: workLabel, label: "“See related work” link text", type: string }
+          - { name: figure, label: "Character image (with a keyboard)", type: object, fields: *figure_fields }
+          - { name: background, label: "Background photo (optional)", type: image }
       - name: archive
         label: Archive heading
         type: object
@@ -225,7 +229,8 @@ content:
           - { name: label, label: Small label, type: string }
           - { name: statement, label: Statement lines, type: string, list: true }
           - { name: story, label: About text, type: text }
-          - { name: figure, label: "Character image (with a notebook or laptop)", type: object, fields: *figure_fields }
+          - { name: figure, label: "Character image (with a laptop)", type: object, fields: *figure_fields }
+          - { name: background, label: "Background photo (optional)", type: image }
           - name: points
             label: Points
             type: object
@@ -243,6 +248,7 @@ content:
           - { name: buttonLabel, label: Button text (when contact details exist), type: string }
           - { name: visitLabel, label: Button text (map only), type: string }
           - { name: figure, label: "Character image (open hand, inviting)", type: object, fields: *figure_fields }
+          - { name: background, label: "Background photo (optional)", type: image }
       - name: location
         label: Location labels
         type: object

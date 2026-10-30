@@ -110,6 +110,8 @@ export function initCarousel() {
   const setActive = (i) => {
     if (i === active) return;
     const dir = i > active ? 1 : -1;
+    // A committed change (not the first layout) gets its soft sound.
+    if (active !== -1) window.dispatchEvent(new CustomEvent('ttm:slide', { detail: { video: Boolean($('video', slides[i])) } }));
     active = i;
     slides.forEach((s, k) => {
       const on = k === i;
