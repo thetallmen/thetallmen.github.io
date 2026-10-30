@@ -8,8 +8,8 @@
    ========================================================================= */
 
 :root {
-  --bg: #F5F3EF;            /* light: soft white, easier on the eyes than #FFF */
-  --bg-2: #EAE6DF;
+  --bg: #FFFFFF;            /* one white page, black type, from top to bottom */
+  --bg-2: #F1F0EE;
   --text: #0B0B0B;
   --muted: rgba(11, 11, 11, .62);
   --line: rgba(11, 11, 11, .13);

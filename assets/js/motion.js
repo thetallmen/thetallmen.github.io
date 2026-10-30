@@ -28,21 +28,15 @@ export function initFilm() {
     scenes.forEach((s) => { if (!s.hasAttribute('data-hero')) io.observe(s); });
   }
 
-  initTone(scenes);
+  initTone();
   initChrome(reduce);
   if (!reduce) initCamera();
 }
 
-// One page, two lights: whichever part crosses the middle of the screen sets
-// the tone, and the whole page eases between white and black (CSS transition).
-function initTone(parts) {
-  const set = (tone) => { if (tone && root.dataset.tone !== tone) root.dataset.tone = tone; };
-  set(parts[0]?.dataset.tone || 'light');
-  if (!('IntersectionObserver' in window)) return;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) set(e.target.dataset.tone); });
-  }, { rootMargin: '-50% 0px -50% 0px' });
-  parts.forEach((p) => io.observe(p));
+// One light for the whole film: a white page with black type. (The dark tone
+// still exists in the CSS but no part switches to it.)
+function initTone() {
+  root.dataset.tone = 'light';
 }
 
 export function playOpening() {
