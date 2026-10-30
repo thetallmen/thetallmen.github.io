@@ -68,6 +68,14 @@ export function initTraces() {
     target.appendChild(svg);
     traces.push(svg);
   });
+  // Hover traces: a small circle that draws around a control while it is hovered.
+  $$('[data-trace-hover]').forEach((host) => {
+    const svg = makeTrace('circle');
+    svg.classList.add('trace--hover');
+    host.classList.add('has-trace');
+    host.appendChild(svg);
+    traces.push(svg);
+  });
   const redraw = () => traces.forEach(draw);
   redraw();
   // Fonts change the size of the words they mark.

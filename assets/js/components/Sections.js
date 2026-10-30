@@ -5,7 +5,7 @@ import { directLinks, socialLinks, mapsHref } from './contactLinks.js';
 
 /* =========================================================================
    THE PAGE, top to bottom:
-   Hero → Clients → Selected work → Services → Archive → Studio → Contact.
+   Hero → Clients → Selected work (Carousel.js) → Services → Archive → Studio → Contact.
    Warm beige page, black type, and one red gesture (the Red Trace) per
    composition at most. The work is shown at its real proportions, sharp.
    ========================================================================= */
@@ -22,21 +22,12 @@ const Btn = ({ href, label, kind = 'solid', external = false, attrs = '' }) => `
     <span class="btn__label">${esc(label)}</span><span class="btn__arrow" aria-hidden="true">→</span>
   </a>`;
 
-// "BYD — Cairo West launch" → client "BYD", line "Cairo West launch".
-function names(p, i) {
-  const full = projectTitle(p, i);
-  const [head, ...tail] = full.split(/\s+[—–-]\s+/);
-  return { full, client: p.client || head, line: tail.join(' — ') || (p.client && p.client !== head ? head : '') };
-}
-
-const kind = (p) => (p.videos.length ? 'Film' : 'Design');
-
-// Media trigger shared by selected work and the archive: films open the player, designs the lightbox.
+// Media trigger for the archive: films open the player, designs the lightbox.
 export function WorkMedia(p, i, { lazyPreview = true } = {}) {
   const v = p.videos[0];
   const img = p.images[0];
   const [w, h] = parseRatio(v ? v.ratio : img.ratio);
-  const { full } = names(p, i);
+  const full = projectTitle(p, i);
   const cover = v ? v.poster : img.src;
   const count = p.videos.length + p.images.length;
   const open = v && count === 1
@@ -109,38 +100,6 @@ export function Clients({ copy, featured, projects }) {
       </ul>
       ${copy.clients.note ? `<p class="clients__note" data-rv="fade">${esc(copy.clients.note)}</p>` : ''}
     </div>
-  </section>`;
-}
-
-/* ---------- Selected work ---------- */
-
-export function Selected({ copy, featured, projects }) {
-  if (!featured.length) return '';
-  const w = copy.work;
-  return `
-  <section class="selected" id="work" aria-labelledby="work-title">
-    <header class="wrap sec-head">
-      ${Label(w.label, pad2(featured.length))}
-      ${Title(w.title, { id: 'work-title', trace: 'circle' })}
-      ${w.text ? `<p class="sec-head__text" data-rv="fade">${esc(w.text)}</p>` : ''}
-    </header>
-    <ol class="wrap selected__grid">
-      ${featured.map((p) => {
-        const i = projects.indexOf(p);
-        const [rw, rh] = parseRatio(p.videos[0] ? p.videos[0].ratio : p.images[0].ratio);
-        const shape = rw > rh ? 'land' : rh / rw > 1.5 ? 'tall' : 'print';
-        const n = names(p, i);
-        return `
-        <li class="wk wk--${shape}" data-rv="clip">
-          ${WorkMedia(p, i)}
-          <div class="wk__meta">
-            <h3 class="wk__client"><span class="wk__name">${esc(n.client)}</span></h3>
-            ${n.line ? `<p class="wk__line">${esc(n.line)}</p>` : ''}
-            <p class="meta wk__tags">${esc(kind(p))}${p.industry ? ` · ${esc(p.industry)}` : ''}</p>
-          </div>
-        </li>`;
-      }).join('')}
-    </ol>
   </section>`;
 }
 

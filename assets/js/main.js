@@ -3,7 +3,8 @@
 import { loadContent } from './config.js';
 import { $ } from './lib/dom.js';
 import { Header, MobileMenu, initHeader } from './components/Header.js';
-import { Hero, Clients, Selected, Services, Studio, Contact } from './components/Sections.js';
+import { Hero, Clients, Services, Studio, Contact } from './components/Sections.js';
+import { Selected, initCarousel } from './components/Carousel.js';
 import { Archive, Lightbox, initArchive, initLightbox } from './components/Archive.js';
 import { VideoModal, initVideoModal } from './components/VideoPlayer.js';
 import { Footer } from './components/Footer.js';
@@ -34,6 +35,7 @@ async function start() {
   $('[data-slot="modal"]').innerHTML = VideoModal() + Lightbox();
 
   initHeader();
+  initCarousel();
   initArchive();
   initVideoModal();
   initLightbox(projects);

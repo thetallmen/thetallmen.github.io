@@ -276,13 +276,6 @@ function initCamera() {
         scrollTrigger: { trigger: el.closest('section') || el, start: 'top top', end: 'bottom top', scrub: true },
       });
     });
-    // The picture drifts slowly inside its frame while the frame stays put.
-    $$('.selected .media__frame > *').forEach((el) => {
-      gsap.fromTo(el, { yPercent: -4 }, {
-        yPercent: 4, ease: 'none',
-        scrollTrigger: { trigger: el.closest('.media'), start: 'top bottom', end: 'bottom top', scrub: true },
-      });
-    });
   });
 
   // The process line fills as the steps pass the middle of the screen.
